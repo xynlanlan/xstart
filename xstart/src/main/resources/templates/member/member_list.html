@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>SpringBoot模版渲染</title>
+	<script type="text/javascript" th:src="@{/js/main.js}"></script> 
+	<link rel="icon" type="image/x-icon" href="/images/mldn.ico"/>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>No.</td>
+			<td>姓名</td>
+			<td>昵称</td>
+			<td>密码</td>
+			<td>偶数</td>
+			<td>奇数</td>
+		</tr>
+		<tr th:each="user,stat:${list}">
+			<td th:text="${stat.index + 1}"/>
+			<td th:text="${user.userName}"/>
+			<td th:text="${user.nickName}"/>
+			<td th:text="${user.password}"/>
+			<td th:text="${stat.even}"/>
+			<td th:text="${stat.odd}"/>
+		</tr>
+	</table>
+</body>
+</html>

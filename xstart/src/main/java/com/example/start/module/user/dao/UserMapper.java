@@ -1,13 +1,12 @@
-package com.example.start.mapper;
+package com.example.start.module.user.dao;
 
-import com.example.start.model.User;
+import com.example.start.module.user.model.User;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created by xueyn on 2018/4/20.
- */
+@Repository
 public interface UserMapper{
 
     User findByPK(Long id);

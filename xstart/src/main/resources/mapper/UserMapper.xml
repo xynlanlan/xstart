@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.start.mapper.UserMapper">
-    <resultMap id="BaseResultMap" type="com.example.start.model.User">
+<mapper namespace="com.example.start.module.user.dao.UserMapper">
+    <resultMap id="BaseResultMap" type="com.example.start.module.user.model.User">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="user_name" jdbcType="VARCHAR" property="userName"/>
         <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
@@ -45,12 +45,12 @@
             #{id}
         </foreach>
     </delete>
-    <insert id="insert" parameterType="com.example.start.model.User" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insert" parameterType="com.example.start.module.user.model.User" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO t_user (id,user_name ,nick_name, password)
         VALUES (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR},
         #{nickName,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR})
     </insert>
-    <insert id="insertSelective" parameterType="com.example.start.model.User" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertSelective" parameterType="com.example.start.module.user.model.User" useGeneratedKeys="true" keyProperty="id">
         insert into t_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -81,7 +81,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPkSelective" parameterType="com.example.start.model.User">
+    <update id="updateByPkSelective" parameterType="com.example.start.module.user.model.User">
         update t_user
         <set>
             <if test="userName != null">
@@ -96,8 +96,8 @@
         </set>
         where id = #{id,jdbcType=BIGINT}
     </update>
-    <update id="updateByPK" parameterType="com.example.start.model.User">
-        UPDATE b_activity
+    <update id="updateByPK" parameterType="com.example.start.module.user.model.User">
+        UPDATE t_user
         SET user_name = #{userName,jdbcType=VARCHAR},
         nick_name = #{nickName,jdbcType=VARCHAR},
         password = #{password,jdbcType=VARCHAR}

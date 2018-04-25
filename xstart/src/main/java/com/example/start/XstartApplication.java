@@ -3,15 +3,16 @@ package com.example.start;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
 import javax.servlet.Filter;
 
+@ServletComponentScan
+@MapperScan("com.example.start.module.*.dao")
 @SpringBootApplication
-@MapperScan("com.example.start.mapper")
-public class XstartApplication extends SpringBootServletInitializer {
+public class XstartApplication{
 
 	public static void main(String[] args) {
 		SpringApplication.run(XstartApplication.class, args);
