@@ -18,30 +18,6 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<!--创建BUILD版本时的一些依赖库-->
-	<repositories>
-		<repository>
-			<id>spring-snapshots</id>
-			<url>http://repo.spring.io/snapshot</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>spring-milestones</id>
-			<url>http://repo.spring.io/milestone</url>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>spring-snapshots</id>
-			<url>http://repo.spring.io/snapshot</url>
-		</pluginRepository>
-		<pluginRepository>
-			<id>spring-milestones</id>
-			<url>http://repo.spring.io/milestone</url>
-		</pluginRepository>
-	</pluginRepositories>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -63,12 +39,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- 添加pagehelper分页插件依赖 -->
-		<dependency>
-			<groupId>com.github.pagehelper</groupId>
-			<artifactId>pagehelper</artifactId>
-			<version>4.2.0</version>
-		</dependency>
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
@@ -84,9 +54,23 @@
 			<artifactId>fastjson</artifactId>
 			<version>1.2.45</version>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.29</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
 		</dependency>
 	</dependencies>
 

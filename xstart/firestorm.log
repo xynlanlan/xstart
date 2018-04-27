@@ -1,0 +1,52 @@
+DEBUG http-nio-8888-exec-1 druid.sql.Connection - {conn-10001} connected
+DEBUG http-nio-8888-exec-1 druid.sql.Connection - {conn-10002} connected
+DEBUG http-nio-8888-exec-1 druid.sql.Connection - {conn-10003} connected
+DEBUG http-nio-8888-exec-1 druid.sql.Connection - {conn-10004} connected
+DEBUG http-nio-8888-exec-1 druid.sql.Connection - {conn-10005} connected
+INFO http-nio-8888-exec-1 com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+DEBUG http-nio-8888-exec-1 druid.sql.Connection - {conn-10005} pool-connect
+DEBUG http-nio-8888-exec-1 druid.sql.Statement - {conn-10005, pstmt-20000} created. select
+         
+        id,user_name,nick_name,password
+     
+        from t_user
+         WHERE 1=1
+DEBUG http-nio-8888-exec-1 druid.sql.Statement - {conn-10005, pstmt-20000} Parameters : []
+DEBUG http-nio-8888-exec-1 druid.sql.Statement - {conn-10005, pstmt-20000} Types : []
+DEBUG http-nio-8888-exec-1 druid.sql.Statement - {conn-10005, pstmt-20000} executed. 1.7473 millis. select
+         
+        id,user_name,nick_name,password
+     
+        from t_user
+         WHERE 1=1
+DEBUG http-nio-8888-exec-1 druid.sql.ResultSet - {conn-10005, pstmt-20000, rs-50000} open
+DEBUG http-nio-8888-exec-1 druid.sql.ResultSet - {conn-10005, pstmt-20000, rs-50000} Header: [id, user_name, nick_name, password]
+DEBUG http-nio-8888-exec-1 druid.sql.ResultSet - {conn-10005, pstmt-20000, rs-50000} Result: [1, admin, 管理员, d3c59d25033dbf980d29554025c23a75]
+DEBUG http-nio-8888-exec-1 druid.sql.ResultSet - {conn-10005, pstmt-20000, rs-50000} Result: [2, test, test, 123]
+DEBUG http-nio-8888-exec-1 druid.sql.ResultSet - {conn-10005, pstmt-20000, rs-50000} Result: [3, 1, 2, 3]
+DEBUG http-nio-8888-exec-1 druid.sql.ResultSet - {conn-10005, pstmt-20000, rs-50000} Result: [4, 23, 23, 45]
+DEBUG http-nio-8888-exec-1 druid.sql.ResultSet - {conn-10005, pstmt-20000, rs-50000} Result: [5, 34, 345, 45]
+DEBUG http-nio-8888-exec-1 druid.sql.ResultSet - {conn-10005, pstmt-20000, rs-50000} closed
+DEBUG http-nio-8888-exec-1 druid.sql.Statement - {conn-10005, pstmt-20000} clearParameters. 
+DEBUG http-nio-8888-exec-1 com.alibaba.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20000} enter cache
+DEBUG http-nio-8888-exec-1 druid.sql.Connection - {conn-10005} pool-recycle
+DEBUG http-nio-8888-exec-9 druid.sql.Connection - {conn-10005} pool-connect
+DEBUG http-nio-8888-exec-9 druid.sql.Statement - {conn-10005, pstmt-20001} created. select
+         
+        id,user_name,nick_name,password
+     
+        from t_user where id = ?
+DEBUG http-nio-8888-exec-9 druid.sql.Statement - {conn-10005, pstmt-20001} Parameters : [1]
+DEBUG http-nio-8888-exec-9 druid.sql.Statement - {conn-10005, pstmt-20001} Types : [BIGINT]
+DEBUG http-nio-8888-exec-9 druid.sql.Statement - {conn-10005, pstmt-20001} executed. 20.318226 millis. select
+         
+        id,user_name,nick_name,password
+     
+        from t_user where id = ?
+DEBUG http-nio-8888-exec-9 druid.sql.ResultSet - {conn-10005, pstmt-20001, rs-50001} open
+DEBUG http-nio-8888-exec-9 druid.sql.ResultSet - {conn-10005, pstmt-20001, rs-50001} Header: [id, user_name, nick_name, password]
+DEBUG http-nio-8888-exec-9 druid.sql.ResultSet - {conn-10005, pstmt-20001, rs-50001} Result: [1, admin, 管理员, d3c59d25033dbf980d29554025c23a75]
+DEBUG http-nio-8888-exec-9 druid.sql.ResultSet - {conn-10005, pstmt-20001, rs-50001} closed
+DEBUG http-nio-8888-exec-9 druid.sql.Statement - {conn-10005, pstmt-20001} clearParameters. 
+DEBUG http-nio-8888-exec-9 com.alibaba.druid.pool.PreparedStatementPool - {conn-10005, pstmt-20001} enter cache
+DEBUG http-nio-8888-exec-9 druid.sql.Connection - {conn-10005} pool-recycle

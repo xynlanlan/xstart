@@ -1,6 +1,6 @@
-package com.example.start.module.user.dao;
+package com.example.start.module.dao;
 
-import com.example.start.module.user.model.User;
+import com.example.start.module.model.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
