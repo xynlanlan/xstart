@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class MyDruidStatInterceptor {
 
-    private static final String[] patterns = new String[]{"com.example.start.module.*.service.*"};
+    private static final String[] patterns = new String[]{"com.example.start.module.service.*"};
 
     @Bean
     public DruidStatInterceptor druidStatInterceptor() {
