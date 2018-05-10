@@ -22,16 +22,24 @@
                 <i class="el-icon-document"></i>
                 <span>图书管理</span>
             </template>
-            <el-menu-item index="1-1">图书列表</el-menu-item>
-            <el-menu-item index="1-2">图书分类</el-menu-item>
+            <router-link :to="{ path: '/bookList' }">
+                <el-menu-item index="3-1">图书列表</el-menu-item>
+            </router-link>
+            <router-link :to="{ path: '/bookClassify' }">
+                <el-menu-item index="3-2">图书分类</el-menu-item>
+            </router-link>
         </el-submenu>
         <el-submenu index="4">
             <template slot="title">
                 <i class="el-icon-setting"></i>
                 <span>设置</span>
             </template>
-            <el-menu-item index="1-1">个人信息</el-menu-item>
-            <el-menu-item index="1-2">修改密码</el-menu-item>
+            <router-link :to="{ path: '/userInfo' }">
+                <el-menu-item index="4-1">个人信息</el-menu-item>
+            </router-link>
+            <router-link :to="{ path: '/changePwd' }">
+                <el-menu-item index="4-2">修改密码</el-menu-item>
+            </router-link>
         </el-submenu>   
         </el-menu>
       <!-- <ul class="list">
