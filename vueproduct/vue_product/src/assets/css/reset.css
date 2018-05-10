@@ -1,0 +1,104 @@
+*,
+::before,
+::after {
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	color: #4A4A4A;
+}
+h1,h2,h3,h4,h5,h6,p,div,span{
+	color: #4A4A4A;
+}
+input {
+	border: none;
+	-webkit-appearance: none
+}
+
+a,a:hover,a:active,a:visited,a:link,a:focus{
+    outline:none;
+    background: none;
+    text-decoration: none;
+    color: #4A4A4A;
+}
+ol,
+ul {
+	list-style: none
+}
+
+.fl {
+	float: left
+}
+
+.fr {
+	float: right
+}
+
+p {
+	margin: 0
+}
+
+.clearfix::before,
+.clearfix::after {
+	content: '';
+	display: block;
+	line-height: 0;
+	height: 0;
+	visibility: hidden;
+	clear: both;
+}
+html,body{
+	-webkit-touch-action: none;
+	-ms-touch-action: none;
+	touch-action: none;
+	/*当触控事件发生在元素上时，不进行任何操作。*/
+}
+html {
+	width: 100%;
+	height: 100%;
+	background: #F7F7F7;
+}
+
+header.mui-bar-nav{
+	-webkit-box-shadow:none;
+	box-shadow:none;
+	border-bottom: 1px solid #898989 ;
+}
+header.mui-bar{
+	height: 49px;
+	padding-left:4px;
+	padding-right:4px;
+	background: #FFFFFF;
+}
+header .mui-title {
+	color: #4A4A4A;
+	font-size: 18px;
+	height: 49px;
+}
+header a{
+	display: block;
+	width: 44px;
+	height: 44px;
+	margin-top: 2px;
+}
+header a i {
+	display: block;
+	width: 44px;
+	height: 44px;
+	background: url(nav_back_android.png) no-repeat;
+	background-size: 44px 44px;
+}
+header a s {
+	display: inline-block;
+	vertical-align: middle;
+	width: 44px;
+	height: 44px;
+	background: url(nav_more.png) no-repeat;
+	background-size: 44px 44px;
+}
+.mui-bar-nav~.mui-content{
+	padding-top: 49px !important;
+	background: #F7F7F7;
+}
