@@ -69,11 +69,7 @@ export default {
   width: 100%;
   height: 100%;
 }
-.clearfix{
-  content: "";
-  clear: both;
-  display: block;
-}
+
 
 
 

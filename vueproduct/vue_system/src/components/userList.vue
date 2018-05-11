@@ -6,7 +6,7 @@
             <el-table :data="tableData" style="width: 100%" align="center" :default-sort = "{prop: 'num', order: 'ascending'}">
                 <el-table-column prop="num" label="#" width="100">
                 </el-table-column>
-                <el-table-column prop="name" label="姓名" sortable width="150">
+                <el-table-column prop="name" label="姓名" sortable width="100">
                 </el-table-column>
                 <el-table-column prop="role" label="角色" sortable width="150">
                 </el-table-column>
@@ -76,7 +76,7 @@ export default {
 <style scoped>
 .userList {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     position: relative;
 }
 .search {
@@ -99,5 +99,8 @@ export default {
 }
 .el-table{
     margin-top: 100px;
+}
+.el-table--scrollable-x .el-table__body-wrapper{
+  overflow-x:hidden;
 }
 </style>

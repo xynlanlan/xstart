@@ -42,9 +42,6 @@ header{
   width: 100%;
   height: 60px;
   background: #383d41;
-  position: fixed;
-  top: 0;
-  left: 0;
   z-index: 999;
 }
 .logo{
@@ -64,6 +61,7 @@ header{
 .userBtn{
   float: right;
   width: auto;
+  height: 60px;
   line-height: 60px;
   cursor: pointer;
 }

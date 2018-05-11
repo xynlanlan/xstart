@@ -9,7 +9,7 @@
               </el-table-column>
               <el-table-column prop="num" label="#" width="50">
               </el-table-column>
-              <el-table-column prop="bookname" label="书名" sortable width="150">
+              <el-table-column prop="bookname" label="书名" sortable width="100">
               </el-table-column>
               <el-table-column prop="author" label="作者" sortable width="150">
               </el-table-column>
@@ -158,7 +158,7 @@ export default {
 <style scoped>
 .bookList {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     position: relative;
 }
 .search {

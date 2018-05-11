@@ -1,10 +1,10 @@
 <template>
-  <div class="leftBar">
-      <div class="menu_toggle">
+  <div class="leftBar" :class="{isshow:isCollapse}">
+      <div class="menu_toggle" @click="changeMenu()">
           <i class="el-icon-arrow-left"></i>
       </div>
       <el-menu default-active="1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" 
-      background-color="#323644" text-color="#fff">
+      background-color="#323644" text-color="#fff" :collapse="isCollapse">
       <router-link :to="{ path: '/' }">
         <el-menu-item index="1">
             <i class="el-icon-location"></i>
@@ -61,7 +61,7 @@ export default {
   name: 'leftBar',
   data () {
     return {
-      toggleFlag: false,
+      isCollapse: false,
       lists:[
           {text:"首页",class:"el-icon-location"},
           {text:"用户列表",class:"el-icon-menu"},
@@ -75,6 +75,9 @@ export default {
     }
   },
   methods:{
+    changeMenu(){
+        this.isCollapse = !this.isCollapse;
+    },
     handleOpen(key, keyPath) {
         console.log(key, keyPath);
     },
@@ -89,14 +92,25 @@ export default {
 <style scoped>
 
 .leftBar{
+    max-width: 170px;
     width: 170px;
-    position: fixed;
+    height: auto;
+    min-height: 100%;
+    flex: 0 0 auto;
+    /* position: fixed;
     bottom: 0;
     top: 60px;
     left: 0;
-    right: 170px;
+    right: 170px; */
     z-index: 999;
 }
+.isshow{
+    width: 65px;
+}
+/* .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
+    min-height: 400px;
+} */
 .el-aside,.el-menu,.el-menu--inline{
     overflow-x: hidden;
 }
