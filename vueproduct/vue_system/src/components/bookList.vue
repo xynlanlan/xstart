@@ -7,17 +7,17 @@
           <el-table :data="tableData" style="width: 100%" align="center" :default-sort = "{prop: 'num', order: 'ascending'}">
               <el-table-column width="50" type="selection">
               </el-table-column>
-              <el-table-column prop="num" label="#" width="50">
+              <el-table-column prop="num" label="#" min-width="50">
               </el-table-column>
-              <el-table-column prop="bookname" label="书名" sortable width="100">
+              <el-table-column prop="bookname" label="书名" sortable min-width="100">
               </el-table-column>
-              <el-table-column prop="author" label="作者" sortable width="150">
+              <el-table-column prop="author" label="作者" sortable min-width="150">
               </el-table-column>
-              <el-table-column prop="date" label="出版时间" sortable width="150">
+              <el-table-column prop="date" label="出版时间" sortable min-width="150">
               </el-table-column>
-              <el-table-column prop="introduction" label="作品简介" width="300">
+              <el-table-column prop="introduction" label="作品简介" min-width="300">
               </el-table-column>
-              <el-table-column prop="email" label="操作" width="200" :formatter="formatter">
+              <el-table-column prop="email" label="操作" min-width="200" :formatter="formatter">
                 <template slot-scope="scope">
                   <el-button
                     size="mini"

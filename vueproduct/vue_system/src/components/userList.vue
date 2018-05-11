@@ -4,17 +4,17 @@
             <el-input placeholder="用户名/姓名/昵称" v-model="inputValue" clearable></el-input>
             <el-button type="primary">查询</el-button>
             <el-table :data="tableData" style="width: 100%" align="center" :default-sort = "{prop: 'num', order: 'ascending'}">
-                <el-table-column prop="num" label="#" width="100">
+                <el-table-column prop="num" label="#" min-width="100">
                 </el-table-column>
-                <el-table-column prop="name" label="姓名" sortable width="100">
+                <el-table-column prop="name" label="姓名" sortable min-width="100">
                 </el-table-column>
-                <el-table-column prop="role" label="角色" sortable width="150">
+                <el-table-column prop="role" label="角色" sortable min-width="150">
                 </el-table-column>
-                <el-table-column prop="sex" label="性别" sortable width="150">
+                <el-table-column prop="sex" label="性别" sortable min-width="150">
                 </el-table-column>
-                <el-table-column prop="email" label="邮箱" sortable width="200">
+                <el-table-column prop="email" label="邮箱" sortable min-width="200">
                 </el-table-column>
-                <el-table-column prop="address" label="地址"  sortable width="300" :formatter="formatter">
+                <el-table-column prop="address" label="地址"  sortable min-width="300" :formatter="formatter">
                 </el-table-column>
             </el-table>
         </el-row>
