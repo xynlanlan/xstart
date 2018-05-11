@@ -4,7 +4,7 @@
           <i class="el-icon-arrow-left"></i>
       </div>
       <el-menu default-active="1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" 
-      background-color="#323644" text-color="#fff" :collapse="isCollapse">
+      background-color="#323644" text-color="#fff" :collapse="isCollapse" collapse-transition="true" >
       <router-link :to="{ path: '/' }">
         <el-menu-item index="1">
             <i class="el-icon-location"></i>
@@ -97,20 +97,10 @@ export default {
     height: auto;
     min-height: 100%;
     flex: 0 0 auto;
-    /* position: fixed;
-    bottom: 0;
-    top: 60px;
-    left: 0;
-    right: 170px; */
-    z-index: 999;
 }
 .isshow{
     width: 65px;
 }
-/* .el-menu-vertical-demo:not(.el-menu--collapse) {
-    width: 200px;
-    min-height: 400px;
-} */
 .el-aside,.el-menu,.el-menu--inline{
     overflow-x: hidden;
 }
@@ -128,6 +118,7 @@ ul,li{
 }
 .el-menu-vertical-demo{
     border-color: #323644;
+    overflow-y: hidden;
 }
 /* .el-menu-item:hover{
     background: #588391;
