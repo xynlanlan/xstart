@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.start.module.dao.SysUserMapper">
+  <resultMap id="BaseResultMap" type="com.example.start.module.entity.SysUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="login_account" jdbcType="VARCHAR" property="loginAccount" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="sex" jdbcType="BIT" property="sex" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="birth_date" jdbcType="TIMESTAMP" property="birthDate" />
+    <result column="disable" jdbcType="BIT" property="disable" />
+    <result column="is_del" jdbcType="BIT" property="isDel" />
+    <result column="create_by" jdbcType="BIGINT" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="BIGINT" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, login_account, user_name, password, sex, phone, email, birth_date, disable, is_del, 
+    create_by, create_time, update_by, update_time
+  </sql>
+  <select id="findByPK" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where   is_del=0  and id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="find" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    <where>
+      is_del=0
+      <if test="id != null">
+         and id=#{id,jdbcType=BIGINT}
+      </if>
+      <if test="loginAccount != null">
+         and login_account=#{loginAccount,jdbcType=VARCHAR}
+      </if>
+      <if test="userName != null">
+         and user_name=#{userName,jdbcType=VARCHAR}
+      </if>
+      <if test="password != null">
+         and password=#{password,jdbcType=VARCHAR}
+      </if>
+      <if test="sex != null">
+         and sex=#{sex,jdbcType=BIT}
+      </if>
+      <if test="phone != null">
+         and phone=#{phone,jdbcType=VARCHAR}
+      </if>
+      <if test="email != null">
+         and email=#{email,jdbcType=VARCHAR}
+      </if>
+      <if test="birthDate != null">
+         and birth_date=#{birthDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="disable != null">
+         and disable=#{disable,jdbcType=BIT}
+      </if>
+      <if test="isDel != null">
+         and is_del=#{isDel,jdbcType=BIT}
+      </if>
+      <if test="createBy != null">
+         and create_by=#{createBy,jdbcType=BIGINT}
+      </if>
+      <if test="createTime != null">
+         and create_time=#{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateBy != null">
+         and update_by=#{updateBy,jdbcType=BIGINT}
+      </if>
+      <if test="updateTime != null">
+         and update_time=#{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+  </select>
+  <update id="deleteByPK" parameterType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update sys_user  set is_del=1
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="batchDelete" parameterType="java.util.List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update sys_user  set is_del=1
+    where id  in  
+    <foreach close=")" collection="ids" item="id" open="(" separator=",">
+      #{id}
+    </foreach>
+  </update>
+  <insert id="insert" parameterType="com.example.start.module.entity.SysUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    insert into sys_user (id, login_account, user_name, 
+      password, sex, phone, email, 
+      birth_date, disable, is_del, 
+      create_by, create_time, update_by, 
+      update_time)
+    values (#{id,jdbcType=BIGINT}, #{loginAccount,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{birthDate,jdbcType=TIMESTAMP}, #{disable,jdbcType=BIT}, #{isDel,jdbcType=BIT}, 
+      #{createBy,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=BIGINT}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.start.module.entity.SysUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    insert into sys_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="loginAccount != null">
+        login_account,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="birthDate != null">
+        birth_date,
+      </if>
+      <if test="disable != null">
+        disable,
+      </if>
+      <if test="isDel != null">
+        is_del,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="loginAccount != null">
+        #{loginAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=BIT},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDate != null">
+        #{birthDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="disable != null">
+        #{disable,jdbcType=BIT},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=BIT},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPkSelective" parameterType="com.example.start.module.entity.SysUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update sys_user
+    <set>
+      <if test="loginAccount != null">
+        login_account = #{loginAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=BIT},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDate != null">
+        birth_date = #{birthDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="disable != null">
+        disable = #{disable,jdbcType=BIT},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=BIT},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPK" parameterType="com.example.start.module.entity.SysUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update sys_user
+    set login_account = #{loginAccount,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=BIT},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      birth_date = #{birthDate,jdbcType=TIMESTAMP},
+      disable = #{disable,jdbcType=BIT},
+      is_del = #{isDel,jdbcType=BIT},
+      create_by = #{createBy,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

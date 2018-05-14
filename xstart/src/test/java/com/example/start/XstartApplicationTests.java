@@ -1,6 +1,6 @@
 package com.example.start;
 
-import com.example.start.module.service.UserService;
+import com.example.start.module.service.SysUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class XstartApplicationTests {
 
 	@Autowired
-	UserService userService;
+	SysUserService userService;
 	@Test
 	public void test() {
     }

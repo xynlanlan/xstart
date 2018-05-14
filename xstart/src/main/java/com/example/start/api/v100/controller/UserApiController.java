@@ -2,7 +2,7 @@ package com.example.start.api.v100.controller;
 
 import com.example.start.common.base.BaseController;
 import com.example.start.common.exception.ServiceException;
-import com.example.start.module.service.UserService;
+import com.example.start.module.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +15,7 @@ import java.util.Map;
 @RequestMapping("api/v100/user")
 public class UserApiController extends BaseController{
     @Autowired
-    public UserService userService;
+    public SysUserService userService;
     @GetMapping("{id}")
     public Map<String, Object> findUserById(@PathVariable("id") Long id) throws ServiceException {
         return success(userService.findOne(id));

@@ -135,10 +135,13 @@ public class DruidDBConfig implements TransactionManagementConfigurer {
         //分页插件
         PageInterceptor pageInterceptor = new PageInterceptor();
         Properties properties = new Properties();
+        properties.setProperty("helperDialect", "mysql");
+        properties.setProperty("offsetAsPageNum", "true");
+        properties.setProperty("rowBoundsWithCount", "true");
+        properties.setProperty("supportMethodsArguments","true");
         properties.setProperty("reasonable", "true");
-        properties.setProperty("supportMethodsArguments", "true");
         properties.setProperty("returnPageInfo", "check");
-        properties.setProperty("params", "count=countSql");
+        properties.setProperty("params", "pageNum=pageNumKey;pageSize=pageSizeKey;");
         pageInterceptor.setProperties(properties);
 
         //添加插件

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.start.module.dao.SysResourcesMapper">
+  <resultMap id="BaseResultMap" type="com.example.start.module.entity.SysResources">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="menu_path" jdbcType="VARCHAR" property="menuPath" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="disabled" jdbcType="BIT" property="disabled" />
+    <result column="is_del" jdbcType="BIT" property="isDel" />
+    <result column="create_by" jdbcType="BIGINT" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="BIGINT" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, menu_name, menu_path, icon, parent_id, sort, disabled, is_del, create_by, create_time, 
+    update_by, update_time
+  </sql>
+  <select id="findByPK" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from sys_resources
+    where   is_del=0  and id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="find" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from sys_resources
+    <where>
+      is_del=0
+      <if test="id != null">
+         and id=#{id,jdbcType=BIGINT}
+      </if>
+      <if test="menuName != null">
+         and menu_name=#{menuName,jdbcType=VARCHAR}
+      </if>
+      <if test="menuPath != null">
+         and menu_path=#{menuPath,jdbcType=VARCHAR}
+      </if>
+      <if test="icon != null">
+         and icon=#{icon,jdbcType=VARCHAR}
+      </if>
+      <if test="parentId != null">
+         and parent_id=#{parentId,jdbcType=BIGINT}
+      </if>
+      <if test="sort != null">
+         and sort=#{sort,jdbcType=INTEGER}
+      </if>
+      <if test="disabled != null">
+         and disabled=#{disabled,jdbcType=BIT}
+      </if>
+      <if test="isDel != null">
+         and is_del=#{isDel,jdbcType=BIT}
+      </if>
+      <if test="createBy != null">
+         and create_by=#{createBy,jdbcType=BIGINT}
+      </if>
+      <if test="createTime != null">
+         and create_time=#{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="updateBy != null">
+         and update_by=#{updateBy,jdbcType=BIGINT}
+      </if>
+      <if test="updateTime != null">
+         and update_time=#{updateTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    ORDER BY getPriority_MENU(id)
+  </select>
+  <update id="deleteByPK" parameterType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update sys_resources  set is_del=1
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="batchDelete" parameterType="java.util.List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update sys_resources  set is_del=1
+    where id  in  
+    <foreach close=")" collection="ids" item="id" open="(" separator=",">
+      #{id}
+    </foreach>
+  </update>
+  <insert id="insert" parameterType="com.example.start.module.entity.SysResources">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    insert into sys_resources (id, menu_name, menu_path, 
+      icon, parent_id, sort, 
+      disabled, is_del, create_by, create_time, 
+      update_by, update_time)
+    values (#{id,jdbcType=BIGINT}, #{menuName,jdbcType=VARCHAR}, #{menuPath,jdbcType=VARCHAR}, 
+      #{icon,jdbcType=VARCHAR}, #{parentId,jdbcType=BIGINT}, #{sort,jdbcType=INTEGER}, 
+      #{disabled,jdbcType=BIT}, #{isDel,jdbcType=BIT}, #{createBy,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=BIGINT}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.start.module.entity.SysResources">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    insert into sys_resources
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="menuName != null">
+        menu_name,
+      </if>
+      <if test="menuPath != null">
+        menu_path,
+      </if>
+      <if test="icon != null">
+        icon,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="disabled != null">
+        disabled,
+      </if>
+      <if test="isDel != null">
+        is_del,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="menuName != null">
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuPath != null">
+        #{menuPath,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="disabled != null">
+        #{disabled,jdbcType=BIT},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=BIT},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPkSelective" parameterType="com.example.start.module.entity.SysResources">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update sys_resources
+    <set>
+      <if test="menuName != null">
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuPath != null">
+        menu_path = #{menuPath,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="disabled != null">
+        disabled = #{disabled,jdbcType=BIT},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=BIT},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPK" parameterType="com.example.start.module.entity.SysResources">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update sys_resources
+    set menu_name = #{menuName,jdbcType=VARCHAR},
+      menu_path = #{menuPath,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=BIGINT},
+      sort = #{sort,jdbcType=INTEGER},
+      disabled = #{disabled,jdbcType=BIT},
+      is_del = #{isDel,jdbcType=BIT},
+      create_by = #{createBy,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

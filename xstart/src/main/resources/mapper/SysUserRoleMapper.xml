@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.start.module.dao.SysUserRoleMapper">
+  <resultMap id="BaseResultMap" type="com.example.start.module.entity.SysUserRole">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, role_id, user_id
+  </sql>
+  <select id="findByPK" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user_role
+    where  id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="find" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user_role
+    <where>
+      1=1
+      <if test="id != null">
+         and id=#{id,jdbcType=BIGINT}
+      </if>
+      <if test="roleId != null">
+         and role_id=#{roleId,jdbcType=BIGINT}
+      </if>
+      <if test="userId != null">
+         and user_id=#{userId,jdbcType=BIGINT}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteByPK" parameterType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    delete from sys_user_role where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="batchDelete" parameterType="java.util.List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    delete from sys_user_role where id  in
+    <foreach close=")" collection="ids" item="id" open="(" separator=",">
+      #{id}
+    </foreach>
+  </delete>
+  <insert id="insert" parameterType="com.example.start.module.entity.SysUserRole">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    insert into sys_user_role (id, role_id, user_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.start.module.entity.SysUserRole">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    insert into sys_user_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPkSelective" parameterType="com.example.start.module.entity.SysUserRole">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update sys_user_role
+    <set>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPK" parameterType="com.example.start.module.entity.SysUserRole">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update sys_user_role
+    set role_id = #{roleId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
