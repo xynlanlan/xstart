@@ -54,4 +54,12 @@ public class SysResourcesServiceImpl implements SysResourcesService {
     public int delete(Long id) throws ServiceException {
         return sysResourcesMapper.deleteByPK(id);
     }
+
+    @Override
+    public int disabled(Long id, Integer status) throws ServiceException {
+        SysResources entity = new SysResources();
+        entity.setId(id);
+        entity.setDisabled(status==1);
+        return update(entity);
+    }
 }

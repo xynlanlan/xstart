@@ -22,4 +22,5 @@ public interface SysResourcesService {
  
     int delete(Long id) throws ServiceException;
 
+    int disabled(Long id, Integer status) throws ServiceException;
 }

@@ -14,7 +14,7 @@ import com.example.start.common.base.BaseController;
 
 
 @RestController
-@RequestMapping("api/sysRoleResources")
+@RequestMapping("api/roleResources")
 public class SysRoleResourcesController extends BaseController {
 	
 	@Autowired

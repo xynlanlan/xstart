@@ -14,7 +14,7 @@ import com.example.start.common.base.BaseController;
 
 
 @RestController
-@RequestMapping("api/sysRole")
+@RequestMapping("api/role")
 public class SysRoleController extends BaseController {
 	
 	@Autowired
@@ -42,7 +42,11 @@ public class SysRoleController extends BaseController {
         
         return success(sysRoleService.delete(id));
     }
+    @RequestMapping(value = "{id}/{status}", method = RequestMethod.GET)
+    public Map<String, Object> disabled(@PathVariable("id") Long id,@PathVariable("status") Integer status) throws ServiceException {
 
+        return success(sysRoleService.disabled(id,status));
+    }
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public Map<String, Object> get(@PathVariable("id") Long id) throws ServiceException {
         return success(sysRoleService.findOne(id));

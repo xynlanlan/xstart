@@ -1,16 +1,3 @@
-/*
-SQLyog Professional v12.09 (64 bit)
-MySQL - 5.5.43 : Database - test
-*********************************************************************
-*/
-
-/*!40101 SET NAMES utf8 */;
-
-/*!40101 SET SQL_MODE=''*/;
-
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 /*Table structure for table `sys_resources` */
 
 CREATE TABLE `sys_resources` (
@@ -105,7 +92,7 @@ insert  into `sys_user_role`(`id`,`role_id`,`user_id`) values (1,1,1);
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` FUNCTION `getPriority_MENU`(gid INT) RETURNS varchar(255) CHARSET utf8
+CREATE DEFINER=`root`@`localhost` FUNCTION `getPriority_MENU`(gid INT) RETURNS varchar(255) CHARSET utf8
     DETERMINISTIC
 BEGIN  
     DECLARE gParentID INT DEFAULT 0;  
@@ -125,7 +112,7 @@ BEGIN
       SELECT parent_id INTO gParentID FROM sys_resources WHERE id = gParentID;  
     END WHILE;   
     RETURN gPriority;  
-  END */$$
+  END $$
 DELIMITER ;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

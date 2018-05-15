@@ -61,4 +61,12 @@ public class SysUserServiceImpl implements SysUserService {
     public int delete(Long id) throws ServiceException {
         return sysUserMapper.deleteByPK(id);
     }
+
+    @Override
+    public int disabled(Long id, Integer status) throws ServiceException {
+        SysUser entity = new SysUser();
+        entity.setId(id);
+        entity.setDisable(status==1);
+        return update(entity);
+    }
 }

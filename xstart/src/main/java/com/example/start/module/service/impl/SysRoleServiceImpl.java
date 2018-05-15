@@ -61,4 +61,12 @@ public class SysRoleServiceImpl implements SysRoleService {
     public int delete(Long id) throws ServiceException {
         return sysRoleMapper.deleteByPK(id);
     }
+
+    @Override
+    public int disabled(Long id, Integer status) throws ServiceException {
+        SysRole entity = new SysRole();
+        entity.setId(id);
+        entity.setDisabled(status==1);
+        return update(entity);
+    }
 }

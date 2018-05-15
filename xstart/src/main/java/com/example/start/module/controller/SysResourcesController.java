@@ -12,7 +12,7 @@ import java.util.Map;
 
 
 @RestController
-@RequestMapping("api/sysResources")
+@RequestMapping("api/resources")
 public class SysResourcesController extends BaseController {
 	
 	@Autowired
@@ -39,6 +39,12 @@ public class SysResourcesController extends BaseController {
     public Map<String, Object> delete(@PathVariable("id") Long id) throws ServiceException {
         
         return success(sysResourcesService.delete(id));
+    }
+
+    @RequestMapping(value = "{id}/{status}", method = RequestMethod.GET)
+    public Map<String, Object> disabled(@PathVariable("id") Long id,@PathVariable("status") Integer status) throws ServiceException {
+
+        return success(sysResourcesService.disabled(id,status));
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
