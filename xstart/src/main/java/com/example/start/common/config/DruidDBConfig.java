@@ -141,7 +141,7 @@ public class DruidDBConfig implements TransactionManagementConfigurer {
         properties.setProperty("supportMethodsArguments","true");
         properties.setProperty("reasonable", "true");
         properties.setProperty("returnPageInfo", "check");
-        properties.setProperty("params", "pageNum=pageNumKey;pageSize=pageSizeKey;");
+        properties.setProperty("params", "pageNum=start;pageSize=limit;pageSizeZero=zero;count=contSql");
         pageInterceptor.setProperties(properties);
 
         //添加插件
