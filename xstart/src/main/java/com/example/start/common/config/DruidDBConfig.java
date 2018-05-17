@@ -130,7 +130,7 @@ public class DruidDBConfig implements TransactionManagementConfigurer {
         //添加XML目录
         VFS.addImplClass(SpringBootVFS.class);
         sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
-        sqlSessionFactoryBean.setTypeAliasesPackage("com.example.start.module.entity");
+        sqlSessionFactoryBean.setTypeAliasesPackage("com.example.start.module.model");
         logger.info("dao层扫描包为:mapper/*.xml");
         //分页插件
         PageInterceptor pageInterceptor = new PageInterceptor();
@@ -141,7 +141,7 @@ public class DruidDBConfig implements TransactionManagementConfigurer {
         properties.setProperty("supportMethodsArguments","true");
         properties.setProperty("reasonable", "true");
         properties.setProperty("returnPageInfo", "check");
-        properties.setProperty("params", "pageNum=start;pageSize=limit;pageSizeZero=zero;count=contSql");
+        properties.setProperty("params", "pageNum=pageNumKey;pageSize=pageSizeKey;");
         pageInterceptor.setProperties(properties);
 
         //添加插件

@@ -2,6 +2,7 @@ package com.example.start.module.entity;
 
 import com.example.start.common.entity.BaseEntity;
 import java.util.Date;
+import java.util.List;
 
 public class SysUser extends BaseEntity {
     /**
@@ -87,7 +88,10 @@ public class SysUser extends BaseEntity {
      * sys_user.update_time
      */
     private Date updateTime;
-
+    /**
+     * 角色
+     */
+    private List<SysRole> roles;
     /**
      * 
      * @return the value of java.lang.Long

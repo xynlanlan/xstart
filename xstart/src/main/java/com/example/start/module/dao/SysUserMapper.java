@@ -47,4 +47,6 @@ public interface SysUserMapper {
      * sys_user
      */
     int updateByPK(SysUser record);
+
+    SysUser findByName(@Param("name") String name);
 }
