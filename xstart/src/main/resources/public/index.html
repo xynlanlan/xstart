@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring-boot</title>
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-translate.min.js"></script>
+    <script src="lib/angular-translate-loader-static-files.min.js"></script>
+    <script src="lib/angular-route.min.js"></script>
+    <script src="js/module/app.module.js"></script>
+    <script src="js/config/app.config.js"></script>
+    <script src="js/controller/app.controller.js"></script>
+    <script src="js/controller/login.controller.js"></script>
+    <script src="js/controller/loginFailed.controller.js"></script>
+    <script src="js/controller/loginSuccess.controller.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/app.css"></link>
+</head>
+<body>
+<h1>{{ 'text.title' | translate }}</h1>
+<span><select ng-controller="appController" ng-model="cur_lan" ng-change="switching(cur_lan)">
+            <option value="en">English</option>
+            <option value="zh">简体中文</option>
+      </select>
+</span>
+<div id="content" ng-view></div>
+</body>
+</html>

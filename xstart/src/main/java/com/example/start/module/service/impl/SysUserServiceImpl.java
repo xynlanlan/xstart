@@ -1,7 +1,12 @@
 package com.example.start.module.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,11 +15,11 @@ import com.example.start.module.entity.SysUser;
 import com.example.start.common.exception.ServiceException;
 import com.example.start.module.dao.SysUserMapper;
 import com.example.start.module.service.SysUserService;
-
+import static java.util.Collections.emptyList;
 
 
 @Component
-public class SysUserServiceImpl implements SysUserService {
+public class SysUserServiceImpl implements UserDetailsService, SysUserService {
 	
 	@Autowired
     private SysUserMapper sysUserMapper;
@@ -25,7 +30,8 @@ public class SysUserServiceImpl implements SysUserService {
         return pager.pagingQuery(new Pager.Callback<SysUser>() {
             @Override
             public List<SysUser> query(SysUser entity) throws ServiceException {
-                return sysUserMapper.find(entity);
+                List<SysUser> list = new ArrayList<>();
+                return list;
             }
         });
     }
@@ -68,5 +74,19 @@ public class SysUserServiceImpl implements SysUserService {
         entity.setId(id);
         entity.setDisable(status==1);
         return update(entity);
+    }
+
+    @Override
+    public SysUser findByNameAndPassword(SysUser user) throws ServiceException {
+        try{
+            return sysUserMapper.findByNameAndPassword(user);
+        }catch(Exception e){
+            throw new ServiceException("[Query has error]", e);
+        }
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        return new User("admin", "9a934152433a974a6a0a2e6b26c6af82", emptyList());
     }
 }

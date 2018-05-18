@@ -91,7 +91,7 @@ public class SysUser extends BaseEntity {
     /**
      * 角色
      */
-    private List<SysRole> roles;
+    private SysRole role;
     /**
      * 
      * @return the value of java.lang.Long
@@ -238,18 +238,18 @@ public class SysUser extends BaseEntity {
 
     /**
      * 是否删除(0: 未删除 1:已删除)
-     * @return the value of java.lang.Boolean
+     * @return
      */
-    public Boolean getIsDel() {
+    public Boolean getDel() {
         return isDel;
     }
 
     /**
      * 是否删除(0: 未删除 1:已删除)
-     * @param isDel * isDel
+     * @param del
      */
-    public void setIsDel(Boolean isDel) {
-        this.isDel = isDel;
+    public void setDel(Boolean del) {
+        isDel = del;
     }
 
     /**
@@ -314,5 +314,13 @@ public class SysUser extends BaseEntity {
      */
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public SysRole getRole() {
+        return role;
+    }
+
+    public void setRole(SysRole role) {
+        this.role = role;
     }
 }

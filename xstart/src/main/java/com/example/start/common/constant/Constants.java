@@ -9,6 +9,7 @@ package com.example.start.common.constant;
  */
 public interface Constants {
 
+    String ENCODING = "UTF-8";
     // ################  REST [START] ##################
     String REST_STATUS = "status";
     String REST_MESSAGE = "message";

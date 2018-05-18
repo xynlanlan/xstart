@@ -1,0 +1,8 @@
+{
+  "text.title": "User System",
+  "input.placeholder.loginAccount": "Enter your username",
+  "input.placeholder.password": "Enter your password",
+  "button.login": "Login",
+  "text.loginFailed": "ERROR Incorrect username or password.",
+  "text.tryLogin": "Jump to the login interface after 5 seconds."
+}

@@ -5,7 +5,6 @@ import com.example.start.common.exception.ServiceException;
 import com.example.start.module.entity.SysResources;
 import com.example.start.module.service.SysResourcesService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -19,7 +18,6 @@ public class SysResourcesController extends BaseController {
 	@Autowired
 	private SysResourcesService sysResourcesService;
 
-    @PreAuthorize("hasRole('admin')")
 	@RequestMapping(value = "list", method = RequestMethod.POST)
     public Map<String, Object> list(@RequestBody SysResources entity) throws ServiceException {
         return success(sysResourcesService.findList(entity));

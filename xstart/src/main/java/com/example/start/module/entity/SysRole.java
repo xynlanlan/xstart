@@ -146,18 +146,18 @@ public class SysRole extends BaseEntity {
 
     /**
      * 是否删除(0: 未删除 1:已删除)
-     * @return the value of java.lang.Boolean
+     * @return
      */
-    public Boolean getIsDel() {
+    public Boolean getDel() {
         return isDel;
     }
 
     /**
      * 是否删除(0: 未删除 1:已删除)
-     * @param isDel * isDel
+     * @param del
      */
-    public void setIsDel(Boolean isDel) {
-        this.isDel = isDel;
+    public void setDel(Boolean del) {
+        isDel = del;
     }
 
     /**

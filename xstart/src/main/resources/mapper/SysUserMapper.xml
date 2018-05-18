@@ -8,7 +8,7 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="login_account" jdbcType="VARCHAR" property="loginAccount" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
+    <!--<result column="password" jdbcType="VARCHAR" property="password" />-->
     <result column="sex" jdbcType="BIT" property="sex" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="email" jdbcType="VARCHAR" property="email" />
@@ -288,5 +288,12 @@
     select
     <include refid="Base_Column_List" />
     from sys_user where user_name = #{name,jdbcType=VARCHAR}
+  </select>
+  <select id="findByNameAndPassword" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sys_user
+    where is_del = 0
+    and login_account = #{loginAccount,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
   </select>
 </mapper>

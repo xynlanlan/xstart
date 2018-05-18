@@ -22,4 +22,6 @@ public interface SysUserService {
     int delete(Long id) throws ServiceException;
 
     int disabled(Long id, Integer status) throws ServiceException;
+
+    SysUser findByNameAndPassword(SysUser user) throws ServiceException;
 }
