@@ -1,8 +1,10 @@
 package com.example.start.module.service.impl;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,7 +17,6 @@ import com.example.start.module.entity.SysUser;
 import com.example.start.common.exception.ServiceException;
 import com.example.start.module.dao.SysUserMapper;
 import com.example.start.module.service.SysUserService;
-import static java.util.Collections.emptyList;
 
 
 @Component
@@ -77,16 +78,25 @@ public class SysUserServiceImpl implements UserDetailsService, SysUserService {
     }
 
     @Override
-    public SysUser findByNameAndPassword(SysUser user) throws ServiceException {
+    public SysUser findByAccount(String account) throws ServiceException {
         try{
-            return sysUserMapper.findByNameAndPassword(user);
+            return sysUserMapper.findByAccount(account);
         }catch(Exception e){
             throw new ServiceException("[Query has error]", e);
         }
     }
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return new User("admin", "9a934152433a974a6a0a2e6b26c6af82", emptyList());
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        SysUser user = null;
+        try {
+            user = sysUserMapper.findByAccount(username);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (user == null) {
+            throw new UsernameNotFoundException("用户名或密码不正确!");
+        }
+        return new User(user.getLoginAccount(), user.getPassword(), new ArrayDeque<SimpleGrantedAuthority>());
     }
 }

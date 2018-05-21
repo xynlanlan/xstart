@@ -23,5 +23,5 @@ public interface SysUserService {
 
     int disabled(Long id, Integer status) throws ServiceException;
 
-    SysUser findByNameAndPassword(SysUser user) throws ServiceException;
+    SysUser findByAccount(String account) throws ServiceException;
 }

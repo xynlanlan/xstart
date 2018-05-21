@@ -50,5 +50,5 @@ public interface SysUserMapper {
 
     SysUser findByName(@Param("name") String name);
 
-    SysUser findByNameAndPassword(SysUser user);
+    SysUser findByAccount(@Param("account") String Account);
 }

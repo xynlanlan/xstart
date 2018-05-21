@@ -1,4 +1,4 @@
-package com.example.start.common.druid;
+package com.example.start.common.interceptor;
 
 import com.alibaba.druid.support.spring.stat.DruidStatInterceptor;
 import org.springframework.aop.Advisor;

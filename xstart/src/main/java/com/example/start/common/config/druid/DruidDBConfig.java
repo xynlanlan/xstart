@@ -1,4 +1,4 @@
-package com.example.start.common.config;
+package com.example.start.common.config.druid;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
@@ -117,7 +117,7 @@ public class DruidDBConfig implements TransactionManagementConfigurer {
         try {
             datasource.setFilters(filters);
         } catch (SQLException e) {
-            logger.error("druid configuration initialization filter : {0}", e);
+            logger.error("interceptor configuration initialization filter : {0}", e);
         }
         datasource.setConnectionProperties(connectionProperties);
 
@@ -166,7 +166,7 @@ public class DruidDBConfig implements TransactionManagementConfigurer {
         logger.info("init Druid Servlet Configuration ");
         ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean();
         servletRegistrationBean.setServlet(new StatViewServlet());
-        servletRegistrationBean.addUrlMappings("/druid/*");
+        servletRegistrationBean.addUrlMappings("/interceptor/*");
         Map<String, String> initParameters = new HashMap<String, String>();
         initParameters.put("loginUsername", "admin");// 用户名
         initParameters.put("loginPassword", "123456");// 密码
@@ -182,7 +182,7 @@ public class DruidDBConfig implements TransactionManagementConfigurer {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
         filterRegistrationBean.setFilter(new WebStatFilter());
         filterRegistrationBean.addUrlPatterns("/*");
-        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
+        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/interceptor/*");
         return filterRegistrationBean;
     }
 

@@ -289,11 +289,11 @@
     <include refid="Base_Column_List" />
     from sys_user where user_name = #{name,jdbcType=VARCHAR}
   </select>
-  <select id="findByNameAndPassword" resultMap="BaseResultMap">
+  <select id="findByAccount" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from sys_user
     where is_del = 0
-    and login_account = #{loginAccount,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
+    and login_account = #{account,jdbcType=VARCHAR}
   </select>
 </mapper>
