@@ -1,14 +1,13 @@
 package com.example.start.module.service.impl;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,6 +16,7 @@ import com.example.start.module.entity.SysUser;
 import com.example.start.common.exception.ServiceException;
 import com.example.start.module.dao.SysUserMapper;
 import com.example.start.module.service.SysUserService;
+import static java.util.Collections.emptyList;
 
 
 @Component
@@ -49,12 +49,20 @@ public class SysUserServiceImpl implements UserDetailsService, SysUserService {
     @Override
     public int add(SysUser entity) throws ServiceException {
     	try{
+            encryptPassword(entity);
     		return sysUserMapper.insertSelective(entity);
     	}catch(Exception e){
     		throw new ServiceException("[Save has error]", e);
     	}       
     }
-
+    /**
+     * 加密密码
+     */
+    private void encryptPassword(SysUser user){
+        String password = user.getPassword();
+        password = new BCryptPasswordEncoder().encode(password);
+        user.setPassword(password);
+    }
  	@Override
     public int update(SysUser entity) throws ServiceException {
     	try{
@@ -97,6 +105,6 @@ public class SysUserServiceImpl implements UserDetailsService, SysUserService {
         if (user == null) {
             throw new UsernameNotFoundException("用户名或密码不正确!");
         }
-        return new User(user.getLoginAccount(), user.getPassword(), new ArrayDeque<SimpleGrantedAuthority>());
+        return new User(user.getLoginAccount(), user.getPassword(), emptyList());
     }
 }

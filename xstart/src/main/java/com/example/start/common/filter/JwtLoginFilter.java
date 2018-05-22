@@ -1,20 +1,14 @@
 package com.example.start.common.filter;
 
-import com.example.start.common.exception.ServiceException;
 import com.example.start.common.utils.JwtUtils;
-import com.example.start.common.utils.MD5;
-import com.example.start.module.entity.SysUser;
-import com.example.start.module.service.SysUserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -23,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -30,9 +25,6 @@ public class JwtLoginFilter extends UsernamePasswordAuthenticationFilter {
 
     public static final String USERNAME = "loginAccount";
     public static final String PASSWORD = "password";
-
-    @Autowired
-    private SysUserService sysUserService;
 
     private AuthenticationManager authenticationManager;
 
@@ -45,8 +37,8 @@ public class JwtLoginFilter extends UsernamePasswordAuthenticationFilter {
         if(!request.getMethod().equals("POST")) {
             throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
         }
-        String username = request.getParameter(USERNAME);
-        String password = request.getParameter(PASSWORD);
+        String username = "admin";//request.getParameter(USERNAME);
+        String password = "123456"/*new BCryptPasswordEncoder().encode("123456")*/;//request.getParameter(PASSWORD);
 
         if(username == null || username == ""){
             throw new AuthenticationServiceException("请输入账号！");
@@ -62,12 +54,13 @@ public class JwtLoginFilter extends UsernamePasswordAuthenticationFilter {
         if (user == null || !user.getPassword().equals(new BCryptPasswordEncoder().encode(password))) {
             throw new UsernameNotFoundException("用户名或密码不正确!");
         }*/
+        /*String encode = new BCryptPasswordEncoder().encode(password);*/
         // 验证用户是否被启用
-        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(username, MD5.encrypt(password.getBytes()));
+        UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(username, password,new ArrayList<>());
         // 允许子类设置详细属性
-        this.setDetails(request, authRequest);
+        //this.setDetails(request, authRequest);
         // 运行UserDetailsService的loadUserByUsername 再次封装Authentication
-        return this.authenticationManager.authenticate(authRequest);
+        return authenticationManager.authenticate(authRequest);
     }
 
     @Override
