@@ -9,7 +9,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -37,28 +36,18 @@ public class JwtLoginFilter extends UsernamePasswordAuthenticationFilter {
         if(!request.getMethod().equals("POST")) {
             throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
         }
-        String username = "admin";//request.getParameter(USERNAME);
-        String password = "123456"/*new BCryptPasswordEncoder().encode("123456")*/;//request.getParameter(PASSWORD);
+        String username = request.getParameter(USERNAME);
+        String password = request.getParameter(PASSWORD);
 
         if(username == null || username == ""){
             throw new AuthenticationServiceException("请输入账号！");
         }else if(password == null || password == ""){
             throw new AuthenticationServiceException("请输入密码！");
         }
-       /* SysUser user = null;
-        try {
-            user = sysUserService.findByAccount(username);
-        } catch (ServiceException e) {
-            e.printStackTrace();
-        }
-        if (user == null || !user.getPassword().equals(new BCryptPasswordEncoder().encode(password))) {
-            throw new UsernameNotFoundException("用户名或密码不正确!");
-        }*/
-        /*String encode = new BCryptPasswordEncoder().encode(password);*/
         // 验证用户是否被启用
         UsernamePasswordAuthenticationToken authRequest = new UsernamePasswordAuthenticationToken(username, password,new ArrayList<>());
         // 允许子类设置详细属性
-        //this.setDetails(request, authRequest);
+        this.setDetails(request, authRequest);
         // 运行UserDetailsService的loadUserByUsername 再次封装Authentication
         return authenticationManager.authenticate(authRequest);
     }
@@ -67,7 +56,7 @@ public class JwtLoginFilter extends UsernamePasswordAuthenticationFilter {
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
         String token = Jwts.builder()
                 .setSubject(((User) authResult.getPrincipal()).getUsername())
-                .setExpiration(new Date(System.currentTimeMillis() + 30 * 60 * 1000))
+                .setExpiration(new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000))
                 .signWith(SignatureAlgorithm.HS512, "PrivateSecret")
                 .compact();
 

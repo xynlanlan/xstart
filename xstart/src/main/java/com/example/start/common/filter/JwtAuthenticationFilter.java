@@ -23,7 +23,7 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
         String header = request.getHeader("Authorization");
-
+        System.out.println(request.getRequestURL());
         if (header == null || !header.startsWith(JwtUtils.getAuthorizationHeaderPrefix())) {
             chain.doFilter(request, response);
             return;

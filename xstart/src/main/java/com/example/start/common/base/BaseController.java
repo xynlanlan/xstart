@@ -54,6 +54,11 @@ public abstract class BaseController {
         return ResultMap.success();
     }
 
+    protected Map<String, Object> failure(Object value) {
+        put(value);
+        return ResultMap.failure();
+    }
+
     /**
      * 设置成功的结果
      *

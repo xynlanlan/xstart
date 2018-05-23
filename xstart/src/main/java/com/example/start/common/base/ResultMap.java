@@ -130,4 +130,10 @@ public final class ResultMap {
         }
         return rs;
     }
+
+    public static Map<String,Object> failure() {
+        put(Constants.REST_STATUS, Constants.REST_ACK_ERROR);
+        put(Constants.REST_MESSAGE, Constants.REST_ERROR_MESSAGE);
+        return returnResult();
+    }
 }
