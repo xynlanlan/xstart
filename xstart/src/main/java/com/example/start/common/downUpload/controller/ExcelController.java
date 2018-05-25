@@ -3,7 +3,6 @@ package com.example.start.common.downUpload.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.example.start.common.base.BaseController;
 import com.example.start.common.downUpload.service.ExcelDownApi;
-import com.example.start.common.downUpload.entity.FormParamsVo;
 import com.example.start.common.utils.ExcelExportUtil;
 import com.example.start.module.entity.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +29,9 @@ public class ExcelController extends BaseController {
             if(str !=null){
                 str = URLDecoder.decode(str,"UTF-8");
             }
-            FormParamsVo form = new FormParamsVo();
             if("user".equals(name)){
                 SysUser sysUser = JSONObject.parseObject(str, SysUser.class);
-                form.setSysUser(sysUser);
-                ExcelExportUtil.downloadExcel(request,response,sysUserExcleDownApiImpl,form);
+                ExcelExportUtil.downloadExcel(request,response,sysUserExcleDownApiImpl,sysUser);
             }
         } catch (Exception e) {
             e.printStackTrace();

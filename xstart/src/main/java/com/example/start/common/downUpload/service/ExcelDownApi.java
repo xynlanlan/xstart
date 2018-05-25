@@ -1,6 +1,7 @@
 package com.example.start.common.downUpload.service;
 
 import com.example.start.common.downUpload.entity.FormParamsVo;
+import com.example.start.common.entity.BaseEntity;
 import com.example.start.common.exception.ServiceException;
 import com.example.start.common.senum.ExcelExportEnum;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -16,7 +17,7 @@ public interface ExcelDownApi {
 
     LinkedHashMap<String, String> getTitle();
 
-    List<?> getData(FormParamsVo form) throws ServiceException;
+    List<?> getData(BaseEntity form) throws ServiceException;
 
     void createTeableData(String[] colContents, Object object, HSSFRow row) ;
 }

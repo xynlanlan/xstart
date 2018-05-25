@@ -2,7 +2,7 @@ package com.example.start.common.downUpload.service.impl;
 
 import com.example.start.common.base.Pager;
 import com.example.start.common.downUpload.service.ExcelDownApi;
-import com.example.start.common.downUpload.entity.FormParamsVo;
+import com.example.start.common.entity.BaseEntity;
 import com.example.start.common.exception.ServiceException;
 import com.example.start.common.senum.ExcelExportEnum;
 import com.example.start.common.utils.ExcelExportUtil;
@@ -42,10 +42,10 @@ public class SysUserExcleDownApiImpl implements ExcelDownApi {
     }
 
     @Override
-    public List<SysUser> getData(FormParamsVo form) throws ServiceException {
+    public List<SysUser> getData(BaseEntity form) throws ServiceException {
         Pager<SysUser> page = new Pager<>();
         page.setPageSize(Integer.MAX_VALUE);
-        page.setCondition(form.getSysUser());
+        page.setCondition((SysUser)form);
         return sysUserService.findByPager(page).getResult();
     }
 

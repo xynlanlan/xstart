@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.example.start.common.downUpload.service.ExcelDownApi;
-import com.example.start.common.downUpload.entity.FormParamsVo;
+import com.example.start.common.entity.BaseEntity;
 import com.example.start.common.exception.ServiceException;
 import com.example.start.common.senum.ExcelExportEnum;
 import org.apache.poi.hssf.usermodel.HSSFCell;
@@ -51,7 +51,7 @@ public class ExcelExportUtil {
 	 * @Method_Name : init
 	 * @return  HSSFWorkbook
 	 */
-	private static HSSFWorkbook init(ExcelDownApi excelDownApi, FormParamsVo form) throws ServiceException {
+	private static HSSFWorkbook init(ExcelDownApi excelDownApi, BaseEntity form) throws ServiceException {
 		HSSFWorkbook wb = new HSSFWorkbook();
 
 		titleFont = wb.createFont();
@@ -82,7 +82,7 @@ public class ExcelExportUtil {
 	 * @param form  表单参数
 	 * @throws Exception
 	 */
-	public static void downloadExcel(HttpServletRequest request, HttpServletResponse response,ExcelDownApi excelDownApi, FormParamsVo form) throws Exception {
+	public static void downloadExcel(HttpServletRequest request, HttpServletResponse response, ExcelDownApi excelDownApi, BaseEntity form /*FormParamsVo form*/) throws Exception {
 
 		// 第一步，创建一个webbook，对应一个Excel文件  
 		HSSFWorkbook wb = init(excelDownApi,form);
