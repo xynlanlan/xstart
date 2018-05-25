@@ -1,3 +1,4 @@
+/*
 package com.example.start.common.filter;
 
 import com.example.start.common.utils.JwtUtils;
@@ -49,3 +50,4 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
         return null;
     }
 }
+*/

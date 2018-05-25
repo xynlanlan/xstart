@@ -1,3 +1,4 @@
+/*
 package com.example.start.common.config.security;
 
 import com.example.start.common.filter.JwtAuthenticationFilter;
@@ -52,7 +53,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public static BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    /*public static NoOpPasswordEncoder passwordEncoder() {
+    */
+/*public static NoOpPasswordEncoder passwordEncoder() {
         return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
-    }*/
+    }*//*
+
+
 }
+*/

@@ -3,11 +3,6 @@ package com.example.start.module.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,11 +11,10 @@ import com.example.start.module.entity.SysUser;
 import com.example.start.common.exception.ServiceException;
 import com.example.start.module.dao.SysUserMapper;
 import com.example.start.module.service.SysUserService;
-import static java.util.Collections.emptyList;
 
 
 @Component
-public class SysUserServiceImpl implements UserDetailsService, SysUserService {
+public class SysUserServiceImpl implements /*UserDetailsService,*/ SysUserService {
 	
 	@Autowired
     private SysUserMapper sysUserMapper;
@@ -31,8 +25,7 @@ public class SysUserServiceImpl implements UserDetailsService, SysUserService {
         return pager.pagingQuery(new Pager.Callback<SysUser>() {
             @Override
             public List<SysUser> query(SysUser entity) throws ServiceException {
-                List<SysUser> list = new ArrayList<>();
-                return list;
+                return sysUserMapper.find(entity);
             }
         });
     }
@@ -49,7 +42,7 @@ public class SysUserServiceImpl implements UserDetailsService, SysUserService {
     @Override
     public int add(SysUser entity) throws ServiceException {
     	try{
-            encryptPassword(entity);
+            //encryptPassword(entity);
     		return sysUserMapper.insertSelective(entity);
     	}catch(Exception e){
     		throw new ServiceException("[Save has error]", e);
@@ -58,11 +51,11 @@ public class SysUserServiceImpl implements UserDetailsService, SysUserService {
     /**
      * 加密密码
      */
-    private void encryptPassword(SysUser user){
+   /* private void encryptPassword(SysUser user){
         String password = user.getPassword();
         password = new BCryptPasswordEncoder().encode(password);
         user.setPassword(password);
-    }
+    }*/
  	@Override
     public int update(SysUser entity) throws ServiceException {
     	try{
@@ -94,7 +87,7 @@ public class SysUserServiceImpl implements UserDetailsService, SysUserService {
         }
     }
 
-    @Override
+    /*@Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         SysUser user = null;
         try {
@@ -106,5 +99,5 @@ public class SysUserServiceImpl implements UserDetailsService, SysUserService {
             throw new UsernameNotFoundException("用户名或密码不正确!");
         }
         return new User(user.getLoginAccount(), user.getPassword(), emptyList());
-    }
+    }*/
 }

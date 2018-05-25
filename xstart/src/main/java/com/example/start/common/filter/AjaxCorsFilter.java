@@ -20,8 +20,8 @@ public class AjaxCorsFilter extends CorsFilter {
         CorsConfiguration corsConfig = new CorsConfiguration();
         corsConfig.setAllowedHeaders(Arrays.asList("x-auth-token", "content-type", "X-Requested-With", "XMLHttpRequest"));
         corsConfig.setAllowedMethods(Arrays.asList("POST", "GET", "DELETE", "PUT", "OPTIONS"));
-        corsConfig.setAllowedOrigins(Arrays.asList("*"));
         corsConfig.setExposedHeaders(Arrays.asList("x-auth-token", "content-type", "X-Requested-With", "XMLHttpRequest"));
+        corsConfig.setAllowedOrigins(Arrays.asList("*"));
         corsConfig.setMaxAge(3600L);
         corsConfig.setAllowCredentials(true);
 
