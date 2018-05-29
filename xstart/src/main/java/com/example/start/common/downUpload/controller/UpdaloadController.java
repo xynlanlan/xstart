@@ -1,6 +1,7 @@
 package com.example.start.common.downUpload.controller;
 
 import com.example.start.common.base.BaseController;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,6 +10,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -48,13 +50,13 @@ public class UpdaloadController extends BaseController {
         return success("上传成功！");
     }
 
-    private String FileIsExists(HttpServletRequest request) {
-        String uploadDir = "D:/upload/images";
-        File dir = new File(uploadDir);
+    private String FileIsExists(HttpServletRequest request) throws FileNotFoundException {
+        File path = new File(ResourceUtils.getURL("classpath:").getPath());
+        File dir = new File(path.getAbsolutePath(),"upload/images/");
         if(!dir.exists()){
             dir.mkdirs();
         }
-        return uploadDir;
+        return dir.getAbsolutePath();
     }
 
     private void executeUpload(MultipartFile file, String uploadDir) throws IOException {

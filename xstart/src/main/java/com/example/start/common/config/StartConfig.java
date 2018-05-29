@@ -1,6 +1,11 @@
 package com.example.start.common.config;
 
+import com.example.start.common.servlet.CheckNumberImgServlet;
+import com.example.start.common.servlet.CheckOtherImgServlet;
+import com.example.start.common.servlet.CheckWordsImgServlet;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -11,7 +16,22 @@ public class StartConfig implements WebMvcConfigurer {
     private String fileUploadPath;
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        //registry.addResourceHandler("/upload/images/**").addResourceLocations("classpath:/upload/images/");
-        registry.addResourceHandler("/upload/images/**").addResourceLocations("file:" + fileUploadPath);
+        registry.addResourceHandler("/upload/images/**").addResourceLocations("classpath:/upload/images/");
+        //registry.addResourceHandler("/upload/images/**").addResourceLocations("file:" + fileUploadPath);
     }
+
+
+    @Bean
+    public ServletRegistrationBean checkWordsImgBean() {
+        return new ServletRegistrationBean(new CheckWordsImgServlet(), "/words/images");
+    }
+    @Bean
+    public ServletRegistrationBean checkNumberImgBean() {
+        return new ServletRegistrationBean(new CheckNumberImgServlet(), "/number/images");
+    }
+    @Bean
+    public ServletRegistrationBean checkOtherImgBean() {
+        return new ServletRegistrationBean(new CheckOtherImgServlet(), "/other/images");
+    }
+
 }
