@@ -21,7 +21,7 @@ public class SysUserRoleController extends BaseController {
 	private SysUserRoleService sysUserRoleService;
 	
 	
-	@RequestMapping(value = "list", method = RequestMethod.POST)
+	/*@RequestMapping(value = "list", method = RequestMethod.POST)
     public Map<String, Object> list(@RequestBody Pager<SysUserRole> pager) throws ServiceException {
 
         return success(sysUserRoleService.findByPager(pager));
@@ -46,6 +46,6 @@ public class SysUserRoleController extends BaseController {
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public Map<String, Object> get(@PathVariable("id") Long id) throws ServiceException {
         return success(sysUserRoleService.findOne(id));
-    }	
+    }	*/
 
 }

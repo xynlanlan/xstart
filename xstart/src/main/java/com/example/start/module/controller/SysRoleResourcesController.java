@@ -19,9 +19,9 @@ public class SysRoleResourcesController extends BaseController {
 	
 	@Autowired
 	private SysRoleResourcesService sysRoleResourcesService;
-	
-	
-	@RequestMapping(value = "list", method = RequestMethod.POST)
+
+
+	/*@RequestMapping(value = "list", method = RequestMethod.POST)
     public Map<String, Object> list(@RequestBody Pager<SysRoleResources> pager) throws ServiceException {
 
         return success(sysRoleResourcesService.findByPager(pager));
@@ -46,6 +46,6 @@ public class SysRoleResourcesController extends BaseController {
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public Map<String, Object> get(@PathVariable("id") Long id) throws ServiceException {
         return success(sysRoleResourcesService.findOne(id));
-    }	
+    }	*/
 
 }
