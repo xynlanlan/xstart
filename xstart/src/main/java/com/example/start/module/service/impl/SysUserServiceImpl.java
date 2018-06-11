@@ -1,8 +1,10 @@
 package com.example.start.module.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import com.example.start.common.utils.CommonUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -43,6 +45,7 @@ public class SysUserServiceImpl implements /*UserDetailsService,*/ SysUserServic
     public int add(SysUser entity) throws ServiceException {
     	try{
             //encryptPassword(entity);
+            CommonUtils.createEntity(entity);
     		return sysUserMapper.insertSelective(entity);
     	}catch(Exception e){
     		throw new ServiceException("[Save has error]", e);
@@ -59,6 +62,7 @@ public class SysUserServiceImpl implements /*UserDetailsService,*/ SysUserServic
  	@Override
     public int update(SysUser entity) throws ServiceException {
     	try{
+            CommonUtils.updateEntity(entity);
     		return sysUserMapper.updateByPkSelective(entity);
 	    }catch(Exception e){
 			throw new ServiceException("[Update has error]", e);

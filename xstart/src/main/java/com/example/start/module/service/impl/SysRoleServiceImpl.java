@@ -2,6 +2,7 @@ package com.example.start.module.service.impl;
 
 import java.util.List;
 
+import com.example.start.common.utils.CommonUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -42,6 +43,7 @@ public class SysRoleServiceImpl implements SysRoleService {
     @Override
     public int add(SysRole entity) throws ServiceException {
     	try{
+            CommonUtils.createEntity(entity);
     		return sysRoleMapper.insertSelective(entity);
     	}catch(Exception e){
     		throw new ServiceException("[Save has error]", e);
@@ -51,6 +53,7 @@ public class SysRoleServiceImpl implements SysRoleService {
  	@Override
     public int update(SysRole entity) throws ServiceException {
     	try{
+            CommonUtils.updateEntity(entity);
     		return sysRoleMapper.updateByPkSelective(entity);
 	    }catch(Exception e){
 			throw new ServiceException("[Update has error]", e);

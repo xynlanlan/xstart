@@ -41,4 +41,7 @@ public class StringUtil {
 		}
 		return str;
 	}
+	public static boolean isNull(String str) {
+		return str == null || str.trim().length()==0;
+	}
 }
