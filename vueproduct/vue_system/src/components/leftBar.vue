@@ -4,7 +4,7 @@
           <i class="el-icon-arrow-left"></i>
       </div>
       <el-menu default-active="1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" 
-      background-color="#323644" text-color="#fff" :collapse="isCollapse" collapse-transition="true" >
+      background-color="#323644" text-color="#fff" :collapse="isCollapse">
       <router-link :to="{ path: '/' }">
         <el-menu-item index="1">
             <i class="el-icon-location"></i>
@@ -34,8 +34,8 @@
                 <i class="el-icon-setting"></i>
                 <span>设置</span>
             </template>
-            <router-link :to="{ path: '/userInfo' }">
-                <el-menu-item index="4-1">个人信息</el-menu-item>
+            <router-link :to="{ path: '/addUser' }">
+                <el-menu-item index="4-1">新增用户</el-menu-item>
             </router-link>
             <router-link :to="{ path: '/changePwd' }">
                 <el-menu-item index="4-2">修改密码</el-menu-item>

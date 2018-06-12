@@ -6,7 +6,7 @@ import home from '@/components/home'
 import userList from '@/components/userList'
 import bookList from '@/components/bookList'
 import bookClassify from '@/components/bookClassify'
-import userInfo from '@/components/userInfo'
+import addUser from '@/components/addUser'
 import changePwd from '@/components/changePwd'
 
 Vue.use(Router)
@@ -34,9 +34,9 @@ export default new Router({
             component: bookClassify
         },
         {
-            path: '/userInfo',
-            name: 'userInfo',
-            component: userInfo
+            path: '/addUser',
+            name: 'addUser',
+            component: addUser
         },
         {
             path: '/changePwd',
