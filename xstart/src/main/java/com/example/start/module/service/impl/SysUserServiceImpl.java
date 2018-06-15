@@ -1,13 +1,11 @@
 package com.example.start.module.service.impl;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import com.example.start.common.utils.CommonUtils;
+import com.example.start.common.exception.ExceptionCode;
+import com.example.start.common.utils.EntityUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.example.start.common.base.Pager;
 import com.example.start.module.entity.SysUser;
 import com.example.start.common.exception.ServiceException;
@@ -44,8 +42,12 @@ public class SysUserServiceImpl implements /*UserDetailsService,*/ SysUserServic
     @Override
     public int add(SysUser entity) throws ServiceException {
     	try{
-            //encryptPassword(entity);
-            CommonUtils.createEntity(entity);
+            int count = sysUserMapper.findAccountCount(0L,entity.getLoginAccount());
+            if(count>0){
+                throw new ServiceException(ExceptionCode.FREQUENCY_ERROR.getCode(),"登录账号不能重复，请重新输入！");
+            }
+            //encryptPassword(entity)L
+            EntityUtils.createEntity(entity);
     		return sysUserMapper.insertSelective(entity);
     	}catch(Exception e){
     		throw new ServiceException("[Save has error]", e);
@@ -62,7 +64,11 @@ public class SysUserServiceImpl implements /*UserDetailsService,*/ SysUserServic
  	@Override
     public int update(SysUser entity) throws ServiceException {
     	try{
-            CommonUtils.updateEntity(entity);
+            int count = sysUserMapper.findAccountCount(entity.getId(),entity.getLoginAccount());
+            if(count>0){
+                throw new ServiceException(ExceptionCode.FREQUENCY_ERROR.getCode(),"登录账号不能重复，请重新输入！");
+            }
+            EntityUtils.updateEntity(entity);
     		return sysUserMapper.updateByPkSelective(entity);
 	    }catch(Exception e){
 			throw new ServiceException("[Update has error]", e);
@@ -88,6 +94,15 @@ public class SysUserServiceImpl implements /*UserDetailsService,*/ SysUserServic
             return sysUserMapper.findByAccount(account);
         }catch(Exception e){
             throw new ServiceException("[Query has error]", e);
+        }
+    }
+
+    @Override
+    public int batchDelete(List<Long> ids) throws ServiceException {
+        try{
+            return sysUserMapper.batchDelete(ids);
+        }catch(Exception e){
+            throw new ServiceException("[Delete has error]", e);
         }
     }
 

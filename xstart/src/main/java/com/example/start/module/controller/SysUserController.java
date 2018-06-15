@@ -1,5 +1,8 @@
 package com.example.start.module.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import com.example.start.common.exception.ExceptionCode;
@@ -86,14 +89,18 @@ public class SysUserController extends BaseController {
         }
         return success(sysUserService.update(entity));
     }
-    @ApiOperation(value="删除用户", notes="根据id删除用户信息")
-    @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long",paramType = "path")
-    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-    public Map<String, Object> delete(@PathVariable("id") Long id) throws ServiceException {
-        if(id == null){
+    @ApiOperation(value="删除用户(包含批量)", notes="根据ids删除用户信息")
+    @ApiImplicitParam(name = "strs", value = "用户ID", required = true, dataType = "String[]",paramType = "path")
+    @RequestMapping(value = "{strs}", method = RequestMethod.DELETE)
+    public Map<String, Object> delete(@PathVariable("strs") String[] strs) throws ServiceException {
+        if(strs == null || strs.length == 0){
             throw new ServiceException(ExceptionCode.ILLEGAL_PARAMETER);
         }
-        return success(sysUserService.delete(id));
+        List<Long> ids = new ArrayList<>();
+        for (int i = 0; i < strs.length; i++) {
+            ids.add(Long.valueOf(strs[i]));
+        }
+        return success(sysUserService.batchDelete(ids));
     }
     @ApiOperation(value="启用/禁用用户", notes="根据id启用/禁用用户")
     @ApiImplicitParams({
@@ -115,6 +122,5 @@ public class SysUserController extends BaseController {
             throw new ServiceException(ExceptionCode.ILLEGAL_PARAMETER);
         }
         return success(sysUserService.findOne(id));
-    }	
-
+    }
 }

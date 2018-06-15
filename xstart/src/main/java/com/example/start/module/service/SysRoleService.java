@@ -4,6 +4,8 @@ import com.example.start.common.base.Pager;
 import com.example.start.module.entity.SysRole;
 import com.example.start.common.exception.ServiceException;
 
+import java.util.List;
+
 public interface SysRoleService {
 	
 
@@ -22,4 +24,6 @@ public interface SysRoleService {
     int delete(Long id) throws ServiceException;
 
     int disabled(Long id, Integer status) throws ServiceException;
+
+    int batchDelete(List<Long> ids) throws ServiceException;
 }

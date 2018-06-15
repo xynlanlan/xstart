@@ -5,7 +5,7 @@ import com.example.start.common.entity.BaseEntity;
 
 import java.util.Date;
 
-public class CommonUtils {
+public class EntityUtils {
     public static void createEntity(BaseEntity entity){
         entity.setDel(false);
         entity.setCreateBy(1L);

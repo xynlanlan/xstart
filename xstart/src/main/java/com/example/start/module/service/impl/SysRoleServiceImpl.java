@@ -2,10 +2,10 @@ package com.example.start.module.service.impl;
 
 import java.util.List;
 
-import com.example.start.common.utils.CommonUtils;
+import com.example.start.common.exception.ExceptionCode;
+import com.example.start.common.utils.EntityUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import com.example.start.common.base.Pager;
 import com.example.start.module.entity.SysRole;
 import com.example.start.common.exception.ServiceException;
@@ -43,7 +43,11 @@ public class SysRoleServiceImpl implements SysRoleService {
     @Override
     public int add(SysRole entity) throws ServiceException {
     	try{
-            CommonUtils.createEntity(entity);
+            int count = sysRoleMapper.findRoleNameCount(0L,entity.getRoleName());
+            if(count>0){
+                throw new ServiceException(ExceptionCode.FREQUENCY_ERROR.getCode(),"角色名不能重复，请重新输入！");
+            }
+            EntityUtils.createEntity(entity);
     		return sysRoleMapper.insertSelective(entity);
     	}catch(Exception e){
     		throw new ServiceException("[Save has error]", e);
@@ -53,7 +57,11 @@ public class SysRoleServiceImpl implements SysRoleService {
  	@Override
     public int update(SysRole entity) throws ServiceException {
     	try{
-            CommonUtils.updateEntity(entity);
+            int count = sysRoleMapper.findRoleNameCount(entity.getId(),entity.getRoleName());
+            if(count>0){
+                throw new ServiceException(ExceptionCode.FREQUENCY_ERROR.getCode(),"角色名不能重复，请重新输入！");
+            }
+            EntityUtils.updateEntity(entity);
     		return sysRoleMapper.updateByPkSelective(entity);
 	    }catch(Exception e){
 			throw new ServiceException("[Update has error]", e);
@@ -71,5 +79,14 @@ public class SysRoleServiceImpl implements SysRoleService {
         entity.setId(id);
         entity.setDisabled(status==1);
         return update(entity);
+    }
+
+    @Override
+    public int batchDelete(List<Long> ids) throws ServiceException {
+        try{
+            return sysRoleMapper.batchDelete(ids);
+        }catch(Exception e){
+            throw new ServiceException("[Delete has error]", e);
+        }
     }
 }

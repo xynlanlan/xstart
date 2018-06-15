@@ -1,5 +1,7 @@
 package com.example.start.module.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import com.example.start.common.exception.ExceptionCode;
@@ -69,13 +71,17 @@ public class SysRoleController extends BaseController {
         return success(sysRoleService.update(entity));
     }
     @ApiOperation(value="删除角色", notes="根据id删除角色信息")
-    @ApiImplicitParam(name = "id", value = "角色ID", required = true, dataType = "Long",paramType = "path")
-    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-    public Map<String, Object> delete(@PathVariable("id") Long id) throws ServiceException {
-        if(id == null){
+    @ApiImplicitParam(name = "strs", value = "角色IDS", required = true, dataType = "String[]",paramType = "path")
+    @RequestMapping(value = "{strs}", method = RequestMethod.DELETE)
+    public Map<String, Object> delete(@PathVariable("strs") String[] strs) throws ServiceException {
+        if(strs == null || strs.length == 0){
             throw new ServiceException(ExceptionCode.ILLEGAL_PARAMETER);
         }
-        return success(sysRoleService.delete(id));
+        List<Long> ids = new ArrayList<>();
+        for (int i = 0; i < strs.length; i++) {
+            ids.add(Long.valueOf(strs[i]));
+        }
+        return success(sysRoleService.batchDelete(ids));
     }
     @ApiOperation(value="启用/禁用角色", notes="根据id启用/禁用角色")
     @ApiImplicitParams({
@@ -97,6 +103,5 @@ public class SysRoleController extends BaseController {
             throw new ServiceException(ExceptionCode.ILLEGAL_PARAMETER);
         }
         return success(sysRoleService.findOne(id));
-    }	
-
+    }
 }

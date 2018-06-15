@@ -4,6 +4,8 @@ import com.example.start.common.base.Pager;
 import com.example.start.module.entity.SysUser;
 import com.example.start.common.exception.ServiceException;
 
+import java.util.List;
+
 public interface SysUserService {
 	
 
@@ -24,4 +26,6 @@ public interface SysUserService {
     int disabled(Long id, Integer status) throws ServiceException;
 
     SysUser findByAccount(String account) throws ServiceException;
+
+    int batchDelete(List<Long> ids) throws ServiceException;
 }
