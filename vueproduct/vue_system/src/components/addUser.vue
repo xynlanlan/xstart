@@ -80,7 +80,9 @@
             })
             .then(response=>{
               // console.log(response);
-              resetForm(formName);
+              this.resetForm(formName);
+              // alert('新建用户成功')
+              this.$router.go(-1);
             })
             .catch(error=>{
               console.log("出错了~~")

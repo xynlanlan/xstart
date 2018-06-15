@@ -11,12 +11,21 @@
             <span slot="title">首页</span>
         </el-menu-item>
          </router-link>
-        <router-link :to="{ path: '/userList' }">
-            <el-menu-item index="2">
+        <el-submenu index="2">
+            <template slot="title">
                 <i class="el-icon-menu"></i>
-                <span slot="title">用户列表</span>
-            </el-menu-item>
-        </router-link>
+                <span>系统管理</span>
+            </template>
+            <router-link :to="{ path: '/userManagement' }">
+                <el-menu-item index="2-1">用户管理</el-menu-item>
+            </router-link>
+            <!-- <router-link> -->
+                <el-menu-item index="2-2">角色管理</el-menu-item>
+            <!-- </router-link> -->
+            <!-- <router-link> -->
+                <el-menu-item index="2-3">资源管理</el-menu-item>
+            <!-- </router-link> -->
+        </el-submenu>
         <el-submenu index="3">
             <template slot="title">
                 <i class="el-icon-document"></i>
@@ -42,16 +51,6 @@
             </router-link>
         </el-submenu>   
         </el-menu>
-      <!-- <ul class="list">
-        <li class="item"  v-for="(item,$index) in lists" :key="$index">
-            <i :class="item.class"></i>
-            <span>{{item.text}}</span>
-            <i :class="item.icon"></i>
-            <ul class="dropdown" id="bookMenu" v-for="(d,$index) in item.dropdown" :key="$index">
-                <li class="item">{{d.text}}</li>
-            </ul>
-        </li>
-    </ul> -->
   </div>
 </template>
 
