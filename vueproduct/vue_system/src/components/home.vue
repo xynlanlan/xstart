@@ -1,5 +1,8 @@
 <template>
   <div>
+      <el-breadcrumb separator="/">
+        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+      </el-breadcrumb>
       <section class="card">
         <el-row>
             <el-col :span="8" v-for="(o, $index) in 3" :key="$index">
@@ -137,10 +140,10 @@ export default {
 
 
 <style scoped>
-.image{
-    /* width: 100%;
-    height: 200px;; */
-}
+/* .image{
+    width: 100%;
+    height: 200px;;
+} */
 .card .el-col{
   padding: 30px 20px;
 }

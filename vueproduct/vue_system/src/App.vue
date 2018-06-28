@@ -1,18 +1,15 @@
 <template>
   <div id="app">
-
-    <eheader></eheader>
-    <!-- <el-row> -->
+    <!-- <router-view/> -->
+    <router-view name="login"/>
+    <router-view name="index"/>
+    <!-- <eheader></eheader>
     <el-container>
       <left-bar></left-bar>
       <el-main>
-          <el-breadcrumb separator="/">
-            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          </el-breadcrumb>
           <router-view/>
         </el-main>
-    </el-container>
-    <!-- </el-row> -->
+    </el-container> -->
   </div>
 </template>
 
@@ -38,7 +35,9 @@ export default {
 </script>
 
 <style>
-body{
+html,body{
+  width: 100%;
+  height: 100%;
   overflow-y: hidden;
 }
 *{
@@ -54,6 +53,8 @@ a,.router-link-active {
   display: block;
 }
 #app {
+  width: 100%;
+  height: 100%;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -75,6 +76,8 @@ a,.router-link-active {
 .el-main{
   overflow-y: auto;
   flex: 1 1 auto;
-  
+}
+.el-breadcrumb{
+ margin-bottom: 10px;
 }
 </style>

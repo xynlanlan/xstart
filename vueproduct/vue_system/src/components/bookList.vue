@@ -1,5 +1,10 @@
 <template>
   <div class="bookList">
+    <el-breadcrumb separator="/">
+        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item><a href="#">图书管理</a></el-breadcrumb-item>
+        <el-breadcrumb-item>图书列表</el-breadcrumb-item>
+      </el-breadcrumb>
       <div class="search">
           <el-input placeholder="书名" v-model="inputValue" clearable class="searchInput"></el-input>
           <el-button type="primary" class="query">查询</el-button>

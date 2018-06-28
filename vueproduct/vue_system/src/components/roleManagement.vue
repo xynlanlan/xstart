@@ -1,33 +1,26 @@
 <template>
-    <div class="userList">
+    <div class="roleList">
       <el-breadcrumb separator="/">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
         <el-breadcrumb-item><a href="#">系统管理</a></el-breadcrumb-item>
-        <el-breadcrumb-item>用户管理</el-breadcrumb-item>
+        <el-breadcrumb-item>角色管理</el-breadcrumb-item>
       </el-breadcrumb>
         <el-row class="search">
-            <el-input placeholder="用户名/姓名/昵称" v-model="inputValue" clearable class="searchInput"></el-input>
+            <el-input placeholder="ID" v-model="inputValue" clearable class="searchInput"></el-input>
             <el-button type="primary" class="query" @click="query()">查询</el-button>
-            <router-link :to="{ path: '/addUser' }">
+            <router-link :to="{ path: '/addRole' }">
               <el-button type="primary" class="add">新增</el-button>
             </router-link>
-            <el-table ref="multipleTable" v-loading="loading" :data="tableData" style="width: 100%" align="center" :default-sort = "{prop: 'id', order: 'ascending'}" @selection-change="getIndex">
+            <el-table ref="multipleTable" :data="roleTableData" style="width: 100%" align="center" :default-sort = "{prop: 'id', order: 'ascending'}" @selection-change="getIndex">
                 <el-table-column width="50" type="selection" class="checkBox" @selection-change="getIndex">
                 </el-table-column>
                 <el-table-column prop="id" label="#" min-width="50">
                 </el-table-column>
-                <el-table-column prop="userName" label="姓名" sortable min-width="80">
+                <el-table-column prop="roleName" label="角色" sortable min-width="120">
                 </el-table-column>
-                <el-table-column prop="loginAccount" label="账号" sortable min-width="90">
+                <el-table-column prop="alias" label="别名" sortable min-width="130">
                 </el-table-column>
-                <el-table-column prop="role" label="角色" sortable min-width="80">
-                </el-table-column>
-                <el-table-column prop="sex" label="性别" sortable min-width="80">
-                  <template slot-scope="scope">
-                    {{scope.row.sex==false?'男':'女'}}
-                  </template>
-                </el-table-column>
-                <el-table-column prop="email" label="邮箱" sortable min-width="160">
+                <el-table-column prop="description" label="描述" sortable min-width="240">
                 </el-table-column>
                 <el-table-column prop="createTime" label="注册时间" sortable min-width="210">
                    <template slot-scope="scope">
@@ -61,29 +54,20 @@
             <el-form-item label="I D">
               <el-input v-model="dialogForm.id" auto-complete="off"></el-input>
             </el-form-item>
-            <el-form-item label="姓名">
-              <el-input v-model="dialogForm.userName" auto-complete="off"></el-input>
+            <el-form-item label="角色">
+              <el-input v-model="dialogForm.roleName" auto-complete="off"></el-input>
             </el-form-item>
-            <el-form-item label="账号">
-              <el-input v-model="dialogForm.loginAccount" auto-complete="off"></el-input>
+            <el-form-item label="别名">
+              <el-input v-model="dialogForm.alias" auto-complete="off"></el-input>
             </el-form-item>
-            <el-form-item label="性别">
-              <div class="radiogroup">
-                <el-radio  v-model="dialogForm.sex" :label="man">男</el-radio>
-                <el-radio  v-model="dialogForm.sex" :label="woman">女</el-radio>
-              </div>
+            <el-form-item label="描述" prop="description">
+                <el-input v-model="dialogForm.description"></el-input>
             </el-form-item>
-            <el-form-item label="手机" prop="phone">
-                <el-input v-model="dialogForm.phone"></el-input>
-            </el-form-item>
-            <el-form-item label="邮箱" prop="email">
-                <el-input v-model="dialogForm.email"></el-input>
-            </el-form-item>
-            <el-form-item label="生日" prop="birthDate">
-                <el-date-picker type="date" placeholder="选择日期" v-model="dialogForm.birthDate" style="width: 100%;"></el-date-picker>
+            <el-form-item label="创建日期" prop="createTime">
+                <el-date-picker type="date" placeholder="选择日期" v-model="dialogForm.createTime" style="width: 100%;"></el-date-picker>
             </el-form-item>
             <el-form-item label="是否禁用">
-                <el-switch v-model="dialogForm.disable"></el-switch>
+                <el-switch v-model="dialogForm.disabled"></el-switch>
             </el-form-item>
           </el-form>
           <div slot="footer" class="dialog-footer">
@@ -98,26 +82,20 @@
 <script>
 import {formatDate} from "../js/formatDate.js"
 export default {
-  name: "userManagement",
+  name: "roleManagement",
   data() {
     return {
       inputValue: "",
-      loading: true,
-      tableData:[],
+      roleTableData:[],
       currentPage: 1,
       totalPage:0,
       formLabelWidth:'120px',
       dialogFormVisible: false,
       dialogForm:{},
-      man:"0",
-      woman:"1",
       multipleSelection:[]
     };
   },
   methods: {
-    formatter(row, column) {
-      return row.address;
-    },
     handleEdit(index, row) {
       console.log(index, row);
       this.dialogFormVisible = true;
@@ -130,15 +108,12 @@ export default {
     },
     confirmBtn(){
       this.dialogFormVisible = false
-      this.$axios.put('http://120.78.161.183:8080/api/user',{
-        birthDate:this.dialogForm.birthDate,
-        disable:Number(this.dialogForm.disable),
-        email:this.dialogForm.email,
-        loginAccount:this.dialogForm.loginAccount,
-        password:this.dialogForm.password,
-        phone:this.dialogForm.phone,
-        sex:Number(this.dialogForm.sex),
-        userName:this.dialogForm.userName,
+      this.$axios.put('http://120.78.161.183:8080/api/role',{
+        createTime:this.dialogForm.createTime,
+        disabled:Number(this.dialogForm.disabled),
+        description:this.dialogForm.description,
+        alias:this.dialogForm.alias,
+        roleName:this.dialogForm.roleName,
         id:this.dialogForm.id
       }).then(response=>{
         console.log(response);
@@ -146,9 +121,10 @@ export default {
         console.log(error);
       })
     },
+    //删除某行
     handleDelete(index, row) {
       console.log(index, row);
-      this.$axios.delete('http://120.78.161.183:8080/api/user/'+row.id)
+      this.$axios.delete('http://120.78.161.183:8080/api/role/'+row.id)
       .then(response=>{
         // window.location.reload(); //这个方法会刷新整个页面，不太好
         let NewPage = '_empty' + '?time=' + new Date().getTime()/1000;
@@ -169,13 +145,14 @@ export default {
       var time = new Date(date);
       return formatDate(time,'yyyy-MM-DD hh:mm:ss');
     },
+    //批量删除
     delAll(){
       let idArr = [];
       this.multipleSelection.map((item)=>{
         idArr.push(item.id)
       })
       console.log(idArr)
-      this.$axios.delete('http://120.78.161.183:8080/api/user/'+idArr.join())
+      this.$axios.delete('http://120.78.161.183:8080/api/role/'+idArr.join())
       .then(response=>{
         let NewPage = '_empty' + '?time=' + new Date().getTime()/1000;
         this.$router.push(NewPage);
@@ -185,26 +162,27 @@ export default {
         console.log(error)
       })
     },
-    getUserList(){
-      this.$axios.post('http://120.78.161.183:8080/api/user/list',{
+    getRoleList(){
+      this.$axios.post('http://120.78.161.183:8080/api/role/list',{
         pager:"{}"
       })
       .then(response=>{
-        this.tableData = response.data.result.result;
+        this.roleTableData = response.data.result.result;
         this.totalPage = response.data.result.total;
       })
       .catch(error=>{
         console.log(error)
       })
     },
+    //查询
     query(){
-      this.$axios.post('http://120.78.161.183:8080/api/user/list',{
+      this.$axios.post('http://120.78.161.183:8080/api/role/list',{
         condition:{
           id:this.inputValue
         }
       })
       .then(response=>{
-        this.tableData = response.data.result.result;
+        this.roleTableData = response.data.result.result;
       })
       .catch(error=>{
         console.log(error);
@@ -215,14 +193,14 @@ export default {
     },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
-      this.$axios.post('http://120.78.161.183:8080/api/user/list',{
+      this.$axios.post('http://120.78.161.183:8080/api/role/list',{
         "pageIndex":val,
         condition:{}
       })
       .then(response=>{
-        this.tableData = response.data.result.result;
+        // console.log(response);
+        this.roleTableData = response.data.result.result;
         this.totalPage = response.data.result.total;
-        this.loading = false;
       })
       .catch(error=>{
         console.log(error);
@@ -230,7 +208,7 @@ export default {
     }
   },
   mounted(){
-    // this.getUserList()
+    // this.getRoleList()
     this.handleCurrentChange(1)
   }
 };
@@ -238,7 +216,7 @@ export default {
 
 
 <style scoped>
-.userList {
+.roleList {
     width: 100%;
     height: 100%;
     position: relative;

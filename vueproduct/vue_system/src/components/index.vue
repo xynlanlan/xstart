@@ -1,51 +1,21 @@
 <template>
-  <section class="wraper">
+  <div id="index">
+
+    <eheader></eheader>
     <el-container>
-      <!-- <eheader></eheader> -->
-      <!-- <el-header>
-        <div class="logo">
-          <i class="el-icon-upload"></i>
-          <h1>LOGO</h1>
-        </div>
-        <h3 class="title">后台管理系统</h3>
-        <div class="userBtn">
-          <el-dropdown trigger="click">
-            <span class="el-dropdown-link">
-              <i class="el-icon-info"></i>
-              <span class="userName">MMMM</span>
-              <i class="el-icon-caret-bottom el-icon--right"></i>
-            </span>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>个人信息</el-dropdown-item>
-              <el-dropdown-item>修改密码</el-dropdown-item>
-              <el-dropdown-item>退出登录</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
-        </div>sss
-      </el-header> -->
-      <!-- <el-container> -->
-        <!-- <el-aside width="170px"> -->
-          <!-- <left-bar></left-bar> -->
-        <!-- </el-aside> -->
-        <el-main>
-          
-          <!-- <el-breadcrumb separator="/">
-            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          </el-breadcrumb> -->
-          
-          <home></home>
+      <left-bar></left-bar>
+      <el-main>
+          <router-view name="content"/>
         </el-main>
-      <!-- </el-container> -->
     </el-container>
-  </section>
+  </div>
 </template>
 
 <script>
-import leftBar from '@/components/leftBar';
-import home from '@/components/home';
-import userList from '@/components/userList';
 import eheader from '@/components/header';
+import leftBar from '@/components/leftBar';
 export default {
+  
   name: 'index',
   data () {
     return {
@@ -56,23 +26,53 @@ export default {
 
   },
   components:{
-    leftBar,
-    home,
-    userList,
-    eheader
+    eheader,
+    leftBar
   }
 }
 </script>
 
-<style scoped>
-.wraper{
-  width: 100%;
-  height: 100%;
+<style>
+body{
+  overflow-y: hidden;
+  background: #fff;
 }
-
-
-
-
-
-
+*{
+  padding: 0;
+  margin: 0;
+}
+a,.router-link-active {
+  text-decoration: none;
+}
+.clearfix{
+  content: "";
+  clear: both;
+  display: block;
+}
+#index {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #fff;
+}
+.el-container{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+}
+.el-aside{
+ background: #333743;
+ height: 100%;
+ overflow: hidden;
+}
+.el-main{
+  overflow-y: auto;
+  flex: 1 1 auto;
+}
+.el-breadcrumb{
+ margin-bottom: 10px;
+}
 </style>
