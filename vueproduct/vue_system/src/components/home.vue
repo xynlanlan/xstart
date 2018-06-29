@@ -3,6 +3,20 @@
       <el-breadcrumb separator="/">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
       </el-breadcrumb>
+      <div class="userShow">
+          <div class="userImg"></div>
+          <h1 class="userName">薛懒懒</h1>
+          <h3 class="userRole">管理员</h3>
+          <h4 class="introduce">这个人很懒，什么都没留下......</h4>
+          <el-row class="btnGroup">
+            <el-button icon="el-icon-search" circle></el-button>
+            <el-button type="primary" icon="el-icon-edit" circle></el-button>
+            <el-button type="success" icon="el-icon-check" circle></el-button>
+            <el-button type="info" icon="el-icon-message" circle></el-button>
+            <el-button type="warning" icon="el-icon-star-off" circle></el-button>
+            <el-button type="danger" icon="el-icon-delete" circle></el-button>
+        </el-row>
+      </div>
       <section class="card">
         <el-row>
             <el-col :span="8" v-for="(o, $index) in 3" :key="$index">
@@ -18,18 +32,6 @@
                 </el-card>
             </el-col>
         </el-row>
-        <!-- <el-row>
-            <el-col :span="12">
-                <div class="grid-content bg-purple">
-                    <img src="../assets/logo.png" alt="">
-                </div>
-            </el-col>
-            <el-col :span="12">
-                <div class="grid-content bg-purple-light">
-                    <img src="../assets/logo.png" alt="">
-                </div>
-            </el-col>
-        </el-row> -->
         <el-row>
             <el-col :span="12">
                 <div id="chart1" style="width:450px;height:400px"></div>
@@ -140,10 +142,37 @@ export default {
 
 
 <style scoped>
-/* .image{
+.userShow{
     width: 100%;
-    height: 200px;;
-} */
+    height: 300px;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+}
+.userImg{
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    margin-left: 20px;
+    background: url(../assets/userImg.jpg);
+    background-size: 100% 100%;
+}
+.userName,.userRole,.introduce{
+    color: #272a2c;
+    position: absolute;
+    top: 30px;
+    left: 260px;
+}
+.userRole{
+    top: 90px;
+}
+.introduce{
+    top: 150px;
+}
+.btnGroup{
+    margin: 30px 0 0 20px;
+    text-align: left;
+}
 .card .el-col{
   padding: 30px 20px;
 }

@@ -108,7 +108,7 @@ export default {
     },
     confirmBtn(){
       this.dialogFormVisible = false
-      this.$axios.put('http://120.78.161.183:8080/api/role',{
+      this.$axios.put('https://xuelanlan.cn:8080/api/role',{
         createTime:this.dialogForm.createTime,
         disabled:Number(this.dialogForm.disabled),
         description:this.dialogForm.description,
@@ -124,7 +124,7 @@ export default {
     //删除某行
     handleDelete(index, row) {
       console.log(index, row);
-      this.$axios.delete('http://120.78.161.183:8080/api/role/'+row.id)
+      this.$axios.delete('https://xuelanlan.cn:8080/api/role/'+row.id)
       .then(response=>{
         // window.location.reload(); //这个方法会刷新整个页面，不太好
         let NewPage = '_empty' + '?time=' + new Date().getTime()/1000;
@@ -152,7 +152,7 @@ export default {
         idArr.push(item.id)
       })
       console.log(idArr)
-      this.$axios.delete('http://120.78.161.183:8080/api/role/'+idArr.join())
+      this.$axios.delete('https://xuelanlan.cn:8080/api/role/'+idArr.join())
       .then(response=>{
         let NewPage = '_empty' + '?time=' + new Date().getTime()/1000;
         this.$router.push(NewPage);
@@ -163,7 +163,7 @@ export default {
       })
     },
     getRoleList(){
-      this.$axios.post('http://120.78.161.183:8080/api/role/list',{
+      this.$axios.post('https://xuelanlan.cn:8080/api/role/list',{
         pager:"{}"
       })
       .then(response=>{
@@ -176,7 +176,7 @@ export default {
     },
     //查询
     query(){
-      this.$axios.post('http://120.78.161.183:8080/api/role/list',{
+      this.$axios.post('https://xuelanlan.cn:8080/api/role/list',{
         condition:{
           id:this.inputValue
         }
@@ -193,7 +193,7 @@ export default {
     },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
-      this.$axios.post('http://120.78.161.183:8080/api/role/list',{
+      this.$axios.post('https://xuelanlan.cn:8080/api/role/list',{
         "pageIndex":val,
         condition:{}
       })

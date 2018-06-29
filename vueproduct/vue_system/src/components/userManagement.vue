@@ -130,7 +130,7 @@ export default {
     },
     confirmBtn(){
       this.dialogFormVisible = false
-      this.$axios.put('http://120.78.161.183:8080/api/user',{
+      this.$axios.put('https://xuelanlan.cn:8080/api/user',{
         birthDate:this.dialogForm.birthDate,
         disable:Number(this.dialogForm.disable),
         email:this.dialogForm.email,
@@ -148,7 +148,7 @@ export default {
     },
     handleDelete(index, row) {
       console.log(index, row);
-      this.$axios.delete('http://120.78.161.183:8080/api/user/'+row.id)
+      this.$axios.delete('https://xuelanlan.cn:8080/api/user/'+row.id)
       .then(response=>{
         // window.location.reload(); //这个方法会刷新整个页面，不太好
         let NewPage = '_empty' + '?time=' + new Date().getTime()/1000;
@@ -175,7 +175,7 @@ export default {
         idArr.push(item.id)
       })
       console.log(idArr)
-      this.$axios.delete('http://120.78.161.183:8080/api/user/'+idArr.join())
+      this.$axios.delete('https://xuelanlan.cn:8080/api/user/'+idArr.join())
       .then(response=>{
         let NewPage = '_empty' + '?time=' + new Date().getTime()/1000;
         this.$router.push(NewPage);
@@ -186,7 +186,7 @@ export default {
       })
     },
     getUserList(){
-      this.$axios.post('http://120.78.161.183:8080/api/user/list',{
+      this.$axios.post('https://xuelanlan.cn:8080/api/user/list',{
         pager:"{}"
       })
       .then(response=>{
@@ -198,7 +198,7 @@ export default {
       })
     },
     query(){
-      this.$axios.post('http://120.78.161.183:8080/api/user/list',{
+      this.$axios.post('https://xuelanlan.cn:8080/api/user/list',{
         condition:{
           id:this.inputValue
         }
@@ -215,7 +215,7 @@ export default {
     },
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
-      this.$axios.post('http://120.78.161.183:8080/api/user/list',{
+      this.$axios.post('https://xuelanlan.cn:8080/api/user/list',{
         "pageIndex":val,
         condition:{}
       })

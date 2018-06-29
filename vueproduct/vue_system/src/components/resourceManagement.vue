@@ -97,7 +97,7 @@ export default {
           </span>);
       },
         getDataList(){
-            this.$axios.post('http://120.78.161.183:8080/api/resources/list',{
+            this.$axios.post('https://xuelanlan.cn:8080/api/resources/list',{
                 entity:"{}"
             }).then(response=>{
                 this.dataList = response.data.result;
