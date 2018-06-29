@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.example.start.common.exception.ExceptionCode;
+import com.example.start.common.interceptor.RequiredPermission;
 import com.example.start.common.utils.StringUtil;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -28,11 +29,11 @@ public class SysUserController extends BaseController {
 	@Autowired
 	private SysUserService sysUserService;
 
+    @RequiredPermission
     @ApiOperation(value="用户列表", notes="根据条件获取用户列表")
     @ApiImplicitParam(name = "pager", value = "分页实体pager", required = true, dataType = "pager")
 	@RequestMapping(value = "list", method = RequestMethod.POST)
     public Map<String, Object> list(@RequestBody Pager<SysUser> pager) throws ServiceException {
-
         return success(sysUserService.findByPager(pager));
     }
     @ApiOperation(value="新增用户", notes="根据entity对象创建用户")
@@ -62,6 +63,7 @@ public class SysUserController extends BaseController {
         }
         return success(sysUserService.add(entity));
     }
+    @RequiredPermission
     @ApiOperation(value="修改用户", notes="根据entity对象编辑用户")
     @ApiImplicitParam(name = "entity", value = "资源实体entity", required = true, dataType = "entity")
     @RequestMapping(method = RequestMethod.PUT)
@@ -89,6 +91,7 @@ public class SysUserController extends BaseController {
         }
         return success(sysUserService.update(entity));
     }
+    @RequiredPermission
     @ApiOperation(value="删除用户(包含批量)", notes="根据ids删除用户信息")
     @ApiImplicitParam(name = "strs", value = "用户ID", required = true, dataType = "String[]",paramType = "path")
     @RequestMapping(value = "{strs}", method = RequestMethod.DELETE)
@@ -102,6 +105,7 @@ public class SysUserController extends BaseController {
         }
         return success(sysUserService.batchDelete(ids));
     }
+    @RequiredPermission
     @ApiOperation(value="启用/禁用用户", notes="根据id启用/禁用用户")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long",paramType = "path"),
@@ -114,6 +118,7 @@ public class SysUserController extends BaseController {
         }
         return success(sysUserService.disabled(id,status));
     }
+    @RequiredPermission
     @ApiOperation(value="查询用户详情", notes="根据id获取用户信息")
     @ApiImplicitParam(name = "id", value = "资源ID", required = true, dataType = "Long",paramType = "path")
     @RequestMapping(value = "{id}", method = RequestMethod.GET)

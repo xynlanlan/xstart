@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.example.start.common.exception.ExceptionCode;
+import com.example.start.common.interceptor.RequiredPermission;
 import com.example.start.common.utils.StringUtil;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -27,6 +28,7 @@ public class SysRoleController extends BaseController {
 	@Autowired
 	private SysRoleService sysRoleService;
 
+    @RequiredPermission
     @ApiOperation(value="角色列表", notes="根据条件获取角色列表")
     @ApiImplicitParam(name = "pager", value = "分页实体pager", required = true, dataType = "pager")
 	@RequestMapping(value = "list", method = RequestMethod.POST)
@@ -34,6 +36,8 @@ public class SysRoleController extends BaseController {
 
         return success(sysRoleService.findByPager(pager));
     }
+
+    @RequiredPermission
     @ApiOperation(value="新增角色", notes="根据entity对象创建角色")
     @ApiImplicitParam(name = "entity", value = "角色实体entity", required = true, dataType = "entity")
     @RequestMapping(method = RequestMethod.POST)
@@ -52,6 +56,8 @@ public class SysRoleController extends BaseController {
         }
         return success(sysRoleService.add(entity));
     }
+
+    @RequiredPermission
     @ApiOperation(value="修改角色", notes="根据entity对象编辑角色")
     @ApiImplicitParam(name = "entity", value = "资源实体entity", required = true, dataType = "entity")
     @RequestMapping(method = RequestMethod.PUT)
@@ -83,6 +89,8 @@ public class SysRoleController extends BaseController {
         }
         return success(sysRoleService.batchDelete(ids));
     }
+
+    @RequiredPermission
     @ApiOperation(value="启用/禁用角色", notes="根据id启用/禁用角色")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "角色ID", required = true, dataType = "Long",paramType = "path"),
@@ -95,6 +103,8 @@ public class SysRoleController extends BaseController {
         }
         return success(sysRoleService.disabled(id,status));
     }
+
+    @RequiredPermission
     @ApiOperation(value="查询角色详情", notes="根据id获取角色信息")
     @ApiImplicitParam(name = "id", value = "角色ID", required = true, dataType = "Long",paramType = "path")
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
