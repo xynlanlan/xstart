@@ -1,6 +1,7 @@
 package com.example.start.module.controller;
 
 import com.example.start.common.base.BaseController;
+import com.example.start.common.constant.Constants;
 import com.example.start.common.exception.ExceptionCode;
 import com.example.start.common.exception.ServiceException;
 import com.example.start.common.interceptor.RequiredPermission;
@@ -52,8 +53,7 @@ public class LoginController extends BaseController {
         if(!entity.getPassword().equals(user.getPassword())){
             throw new ServiceException(ExceptionCode.PASSWORD_ERROR.getCode(),"密码错误，请重新输入！");
         }
-        log.info("=====login sessionId : " + session.getId());
-        session.setAttribute(session.getId(),user);
+        session.setAttribute(Constants.PROJECT_NAME + Constants.USER_ + user.getId(),user);
         return success();
     }
     @RequiredPermission
