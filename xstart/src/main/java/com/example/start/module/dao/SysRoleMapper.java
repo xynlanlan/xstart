@@ -47,4 +47,6 @@ public interface SysRoleMapper {
      * sys_role
      */
     int updateByPK(SysRole record);
+
+    int findRoleNameCount(@Param("id") Long id,@Param("roleName")  String roleName);
 }

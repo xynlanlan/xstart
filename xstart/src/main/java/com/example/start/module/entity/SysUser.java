@@ -60,35 +60,6 @@ public class SysUser extends BaseEntity {
     private Boolean disable;
 
     /**
-     * 是否删除(0: 未删除 1:已删除)
-     * sys_user.is_del
-     */
-    private Boolean isDel;
-
-    /**
-     * 创建人
-     * sys_user.create_by
-     */
-    private Long createBy;
-
-    /**
-     * 创建时间
-     * sys_user.create_time
-     */
-    private Date createTime;
-
-    /**
-     * 修改人
-     * sys_user.update_by
-     */
-    private Long updateBy;
-
-    /**
-     * 修改时间
-     * sys_user.update_time
-     */
-    private Date updateTime;
-    /**
      * 角色
      */
     private SysRole role;
@@ -234,86 +205,6 @@ public class SysUser extends BaseEntity {
      */
     public void setDisable(Boolean disable) {
         this.disable = disable;
-    }
-
-    /**
-     * 是否删除(0: 未删除 1:已删除)
-     * @return
-     */
-    public Boolean getDel() {
-        return isDel;
-    }
-
-    /**
-     * 是否删除(0: 未删除 1:已删除)
-     * @param del
-     */
-    public void setDel(Boolean del) {
-        isDel = del;
-    }
-
-    /**
-     * 创建人
-     * @return the value of java.lang.Long
-     */
-    public Long getCreateBy() {
-        return createBy;
-    }
-
-    /**
-     * 创建人
-     * @param createBy * createBy
-     */
-    public void setCreateBy(Long createBy) {
-        this.createBy = createBy;
-    }
-
-    /**
-     * 创建时间
-     * @return the value of java.util.Date
-     */
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    /**
-     * 创建时间
-     * @param createTime * createTime
-     */
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    /**
-     * 修改人
-     * @return the value of java.lang.Long
-     */
-    public Long getUpdateBy() {
-        return updateBy;
-    }
-
-    /**
-     * 修改人
-     * @param updateBy * updateBy
-     */
-    public void setUpdateBy(Long updateBy) {
-        this.updateBy = updateBy;
-    }
-
-    /**
-     * 修改时间
-     * @return the value of java.util.Date
-     */
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    /**
-     * 修改时间
-     * @param updateTime * updateTime
-     */
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
     }
 
     public SysRole getRole() {

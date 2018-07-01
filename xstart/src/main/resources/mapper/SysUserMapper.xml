@@ -8,7 +8,7 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="login_account" jdbcType="VARCHAR" property="loginAccount" />
     <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <!--<result column="password" jdbcType="VARCHAR" property="password" />-->
+    <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="sex" jdbcType="BIT" property="sex" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="email" jdbcType="VARCHAR" property="email" />
@@ -24,7 +24,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    id, login_account, user_name, password, sex, phone, email, birth_date, disable, is_del, 
+    id, login_account, user_name, password, sex, phone, email, birth_date, disable, is_del,
     create_by, create_time, update_by, update_time
   </sql>
   <select id="findByPK" parameterType="java.lang.Long" resultMap="BaseResultMap">
@@ -49,10 +49,10 @@
          and id=#{id,jdbcType=BIGINT}
       </if>
       <if test="loginAccount != null">
-         and login_account=#{loginAccount,jdbcType=VARCHAR}
+        and login_account LIKE CONCAT(CONCAT('%',#{loginAccount,jdbcType=VARCHAR}),'%')
       </if>
       <if test="userName != null">
-         and user_name=#{userName,jdbcType=VARCHAR}
+         and user_name LIKE CONCAT(CONCAT('%',#{userName,jdbcType=VARCHAR}),'%')
       </if>
       <if test="password != null">
          and password=#{password,jdbcType=VARCHAR}
@@ -61,10 +61,10 @@
          and sex=#{sex,jdbcType=BIT}
       </if>
       <if test="phone != null">
-         and phone=#{phone,jdbcType=VARCHAR}
+         and phone LIKE CONCAT(CONCAT('%',#{phone,jdbcType=VARCHAR}),'%')
       </if>
       <if test="email != null">
-         and email=#{email,jdbcType=VARCHAR}
+         and email LIKE CONCAT(CONCAT('%',#{email,jdbcType=VARCHAR}),'%')
       </if>
       <if test="birthDate != null">
          and birth_date=#{birthDate,jdbcType=TIMESTAMP}
@@ -88,6 +88,7 @@
          and update_time=#{updateTime,jdbcType=TIMESTAMP}
       </if>
     </where>
+    ORDER by update_time DESC
   </select>
   <update id="deleteByPK" parameterType="java.lang.Long">
     <!--
@@ -295,5 +296,13 @@
     from sys_user
     where is_del = 0
     and login_account = #{account,jdbcType=VARCHAR}
+  </select>
+  <select id="findAccountCount" resultType="int">
+    select count(1) from sys_user
+    where is_del = 0
+    and login_account = #{account,jdbcType=VARCHAR}
+    <if test="id != 0">
+      and id != #{id,jdbcType=BIGINT}
+    </if>
   </select>
 </mapper>

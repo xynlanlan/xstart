@@ -1,57 +1,42 @@
 <template>
   <div class="leftBar" :class="{isshow:isCollapse}">
       <div class="menu_toggle" @click="changeMenu()">
-          <i class="el-icon-arrow-left"></i>
+          <i :class="[isCollapse ? 'el-icon-arrow-right' : 'el-icon-arrow-left']"></i>
       </div>
-      <el-menu default-active="1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" 
-      background-color="#323644" text-color="#fff" :collapse="isCollapse" collapse-transition="true" >
-      <router-link :to="{ path: '/' }">
-        <el-menu-item index="1">
+      <el-menu :default-active="$route.path" :router="true" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" 
+      background-color="#323644" text-color="#fff" :collapse="isCollapse">
+      <!-- <router-link :to="{ path: '/' }"> -->
+        <el-menu-item index="/home">
             <i class="el-icon-location"></i>
             <span slot="title">首页</span>
         </el-menu-item>
-         </router-link>
-        <router-link :to="{ path: '/userList' }">
-            <el-menu-item index="2">
+         <!-- </router-link> -->
+        <el-submenu index="2">
+            <template slot="title">
                 <i class="el-icon-menu"></i>
-                <span slot="title">用户列表</span>
-            </el-menu-item>
-        </router-link>
+                <span>系统管理</span>
+            </template>
+            <el-menu-item index="/userManagement">用户管理</el-menu-item>
+            <el-menu-item index="/roleManagement">角色管理</el-menu-item>
+            <el-menu-item index="/resourceManagement">资源管理</el-menu-item>
+        </el-submenu>
         <el-submenu index="3">
             <template slot="title">
                 <i class="el-icon-document"></i>
                 <span>图书管理</span>
             </template>
-            <router-link :to="{ path: '/bookList' }">
-                <el-menu-item index="3-1">图书列表</el-menu-item>
-            </router-link>
-            <router-link :to="{ path: '/bookClassify' }">
-                <el-menu-item index="3-2">图书分类</el-menu-item>
-            </router-link>
+            <el-menu-item index="/bookList">图书列表</el-menu-item>
+            <el-menu-item index="/bookClassify">图书分类</el-menu-item>
         </el-submenu>
         <el-submenu index="4">
             <template slot="title">
                 <i class="el-icon-setting"></i>
                 <span>设置</span>
             </template>
-            <router-link :to="{ path: '/userInfo' }">
-                <el-menu-item index="4-1">个人信息</el-menu-item>
-            </router-link>
-            <router-link :to="{ path: '/changePwd' }">
-                <el-menu-item index="4-2">修改密码</el-menu-item>
-            </router-link>
+            <el-menu-item index="/addUser">新增用户</el-menu-item>
+            <el-menu-item index="/changePwd">修改密码</el-menu-item>
         </el-submenu>   
         </el-menu>
-      <!-- <ul class="list">
-        <li class="item"  v-for="(item,$index) in lists" :key="$index">
-            <i :class="item.class"></i>
-            <span>{{item.text}}</span>
-            <i :class="item.icon"></i>
-            <ul class="dropdown" id="bookMenu" v-for="(d,$index) in item.dropdown" :key="$index">
-                <li class="item">{{d.text}}</li>
-            </ul>
-        </li>
-    </ul> -->
   </div>
 </template>
 
@@ -97,6 +82,7 @@ export default {
     height: auto;
     min-height: 100%;
     flex: 0 0 auto;
+    background: #323644;
 }
 .isshow{
     width: 65px;

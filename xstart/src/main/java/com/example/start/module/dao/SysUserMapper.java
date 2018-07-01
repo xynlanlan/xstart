@@ -51,4 +51,6 @@ public interface SysUserMapper {
     SysUser findByName(@Param("name") String name);
 
     SysUser findByAccount(@Param("account") String Account);
+
+    int findAccountCount(@Param("id") Long id,@Param("account") String Account);
 }

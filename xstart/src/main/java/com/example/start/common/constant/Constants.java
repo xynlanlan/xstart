@@ -9,6 +9,8 @@ package com.example.start.common.constant;
  */
 public interface Constants {
 
+    String PROJECT_NAME = "xstart_";
+    String USER_ = "user_";
     String ENCODING = "UTF-8";
     // ################  REST [START] ##################
     String REST_STATUS = "status";

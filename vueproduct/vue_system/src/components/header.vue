@@ -9,7 +9,8 @@
           <el-dropdown trigger="click">
             <span class="el-dropdown-link">
               <i class="el-icon-info"></i>
-              <span class="userName">MMMM</span>
+              <span class="userName">{{loginAccount}}</span>
+              <!-- <span class="userName">{{$store.state.account}}</span> -->
               <i class="el-icon-caret-bottom el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
@@ -23,16 +24,28 @@
 </template>
 
 <script>
+import { mapState,mapMutations, mapActions } from 'vuex'
 export default {
   data () {
     return {
-      // currentDate: new Date()
+      loginAccount:""
     }
   },
-  methods:{
+  computed: {
     
   },
-  components:{
+  methods:{
+    ...mapMutations(
+      ['getLoginAccount']
+    ),
+    userName(){
+      this.loginAccount =  sessionStorage.getItem('userName');
+      console.log(this.loginAccount)
+    }
+
+  },
+  mounted(){
+    this.userName();
   }
 }
 </script>
