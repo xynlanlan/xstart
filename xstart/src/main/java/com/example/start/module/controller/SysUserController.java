@@ -1,24 +1,22 @@
 package com.example.start.module.controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
+import com.example.start.common.base.BaseController;
+import com.example.start.common.base.Pager;
 import com.example.start.common.exception.ExceptionCode;
+import com.example.start.common.exception.ServiceException;
 import com.example.start.common.interceptor.RequiredPermission;
 import com.example.start.common.utils.StringUtil;
+import com.example.start.module.entity.SysUser;
+import com.example.start.module.service.SysUserService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.start.module.service.SysUserService;
-import com.example.start.common.base.Pager;
-import com.example.start.module.entity.SysUser;
-import com.example.start.common.exception.ServiceException;
-import com.example.start.common.base.BaseController;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 

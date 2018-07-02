@@ -9,6 +9,7 @@ package com.example.start.common.constant;
  */
 public interface Constants {
 
+    String SIGNING_KEY = "xstart369"; // jwt秘钥
     String PROJECT_NAME = "xstart_";
     String USER_ = "user_";
     String ENCODING = "UTF-8";

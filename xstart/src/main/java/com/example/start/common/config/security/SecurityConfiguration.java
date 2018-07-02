@@ -1,4 +1,3 @@
-/*
 package com.example.start.common.config.security;
 
 import com.example.start.common.filter.JwtAuthenticationFilter;
@@ -7,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -21,14 +21,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-
     @Autowired
     private UserDetailsService userDetailsService;
-
-    @Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-    }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
@@ -39,25 +33,30 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/login.html","/login").permitAll()
+                .antMatchers(HttpMethod.POST,"/login").permitAll()
                 .anyRequest().authenticated()
-                .and().formLogin()
-                .loginPage("/login.html")
-                .loginProcessingUrl("/login")
-                .and().logout().permitAll()
                 .and()
                 .addFilter(new JwtLoginFilter(authenticationManager()))
-                .addFilter(new JwtAuthenticationFilter(authenticationManager()));
+                .addFilter(new JwtAuthenticationFilter(authenticationManager()))
+                .logout() // 默认注销行为为logout，可以通过下面的方式来修改
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login")
+                .permitAll().invalidateHttpSession(true);
     }
+    @Override
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+    }
+
     @Bean
-    public static BCryptPasswordEncoder passwordEncoder() {
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    */
-/*public static NoOpPasswordEncoder passwordEncoder() {
-        return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
-    }*//*
 
+    /*@Bean
+    public static NoOpPasswordEncoder passwordEncoder() {
+        return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
+    }
+*/
 
 }
-*/

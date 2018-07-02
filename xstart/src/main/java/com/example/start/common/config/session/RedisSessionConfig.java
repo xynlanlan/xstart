@@ -10,7 +10,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 
 //默认是1800秒过期
 @Configuration
-@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 3600)
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 60 * 60 * 24)
 public class RedisSessionConfig {
 
     @Value("${spring.redis.host}")

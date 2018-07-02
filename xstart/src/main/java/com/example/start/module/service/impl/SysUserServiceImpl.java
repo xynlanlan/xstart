@@ -1,20 +1,26 @@
 package com.example.start.module.service.impl;
 
+import com.example.start.common.base.Pager;
+import com.example.start.common.exception.ExceptionCode;
+import com.example.start.common.exception.ServiceException;
+import com.example.start.common.utils.EntityUtils;
+import com.example.start.module.dao.SysUserMapper;
+import com.example.start.module.entity.SysUser;
+import com.example.start.module.service.SysUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 import java.util.List;
 
-import com.example.start.common.exception.ExceptionCode;
-import com.example.start.common.utils.EntityUtils;
-import org.springframework.stereotype.Component;
-import org.springframework.beans.factory.annotation.Autowired;
-import com.example.start.common.base.Pager;
-import com.example.start.module.entity.SysUser;
-import com.example.start.common.exception.ServiceException;
-import com.example.start.module.dao.SysUserMapper;
-import com.example.start.module.service.SysUserService;
+import static java.util.Collections.emptyList;
 
 
 @Component
-public class SysUserServiceImpl implements /*UserDetailsService,*/ SysUserService {
+public class SysUserServiceImpl implements UserDetailsService, SysUserService {
 	
 	@Autowired
     private SysUserMapper sysUserMapper;
@@ -46,7 +52,7 @@ public class SysUserServiceImpl implements /*UserDetailsService,*/ SysUserServic
             if(count>0){
                 throw new ServiceException(ExceptionCode.FREQUENCY_ERROR.getCode(),"登录账号不能重复，请重新输入！");
             }
-            //encryptPassword(entity)L
+            encryptPassword(entity);
             EntityUtils.createEntity(entity);
     		return sysUserMapper.insertSelective(entity);
     	}catch(Exception e){
@@ -56,11 +62,11 @@ public class SysUserServiceImpl implements /*UserDetailsService,*/ SysUserServic
     /**
      * 加密密码
      */
-   /* private void encryptPassword(SysUser user){
+    private void encryptPassword(SysUser user){
         String password = user.getPassword();
         password = new BCryptPasswordEncoder().encode(password);
         user.setPassword(password);
-    }*/
+    }
  	@Override
     public int update(SysUser entity) throws ServiceException {
     	try{
@@ -106,7 +112,7 @@ public class SysUserServiceImpl implements /*UserDetailsService,*/ SysUserServic
         }
     }
 
-    /*@Override
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         SysUser user = null;
         try {
@@ -118,5 +124,5 @@ public class SysUserServiceImpl implements /*UserDetailsService,*/ SysUserServic
             throw new UsernameNotFoundException("用户名或密码不正确!");
         }
         return new User(user.getLoginAccount(), user.getPassword(), emptyList());
-    }*/
+    }
 }

@@ -59,13 +59,13 @@ public class SecurityInterceptor implements HandlerInterceptor {
                 }
                 return permissionSet.contains(requiredPermission.value());
             }*/
-           if(requiredPermission != null){
-               HttpSession session = request.getSession();
-               log.info("=============sessionId : " + session.getId());
-               SysUser user = (SysUser)session.getAttribute(session.getId());
-               return user != null;
+           if(requiredPermission == null){
+               return true;
            }
-
+            HttpSession session = request.getSession();
+            log.info("=============sessionId : " + session.getId());
+            SysUser user = (SysUser)session.getAttribute(session.getId());
+            return user != null;
         }
         return false;
     }
