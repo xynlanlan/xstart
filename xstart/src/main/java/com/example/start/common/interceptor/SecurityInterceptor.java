@@ -5,6 +5,7 @@ import com.example.start.common.constant.Constants;
 import com.example.start.module.entity.SysUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -27,8 +28,6 @@ public class SecurityInterceptor implements HandlerInterceptor {
         }
         response.setHeader("Content-type", "application/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
-        //response.sendError(HttpStatus.FORBIDDEN.value(), "未登陆！");
-        response.setStatus(500);
         Map<String,Object> map = new HashMap<>();
         map.put("status", Constants.REST_ACK_ERROR);
         map.put("message","未登陆!");

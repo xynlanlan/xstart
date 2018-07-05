@@ -123,6 +123,6 @@ public class SysUserServiceImpl implements UserDetailsService, SysUserService {
         if (user == null) {
             throw new UsernameNotFoundException("用户名或密码不正确!");
         }
-        return new User(user.getLoginAccount(), user.getPassword(), emptyList());
+        return new User(user.getUserName(), user.getPassword(), emptyList());
     }
 }

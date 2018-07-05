@@ -1,5 +1,6 @@
 package com.example.start.common.filter;
 
+import com.alibaba.druid.support.json.JSONUtils;
 import com.example.start.common.constant.Constants;
 import com.example.start.common.utils.JwtUtils;
 import com.example.start.module.entity.SysUser;
@@ -21,6 +22,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 验证用户名密码正确后，生成一个token，并将token返回给客户端
@@ -64,12 +67,21 @@ public class JwtLoginFilter extends UsernamePasswordAuthenticationFilter {
     // 用户成功登录后，这个方法会被调用，我们在这个方法里生成token
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
+        String username = ((User) authResult.getPrincipal()).getUsername();
         String token = Jwts.builder()
-                .setSubject(((User) authResult.getPrincipal()).getUsername())
+                .setSubject(username)
                 .setExpiration(new Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000))
                 .signWith(SignatureAlgorithm.HS512, Constants.SIGNING_KEY)
                 .compact();
-        request.getSession().setAttribute(Constants.USER_ + token , "user");
-        response.addHeader("Authorization", JwtUtils.getTokenHeader(token));
+        //request.getSession().setAttribute(Constants.USER_ + token , username);
+        //response.addHeader("Authorization", JwtUtils.getTokenHeader(token));
+
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json");
+        Map<String,Object> map = new HashMap<>();
+        map.put("Authorization", JwtUtils.getTokenHeader(token));
+        map.put("userName",username);
+        logger.info("=============login return : " + map);
+        response.getWriter().print(JSONUtils.toJSONString(map));
     }
 }

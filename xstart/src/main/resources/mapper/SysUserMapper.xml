@@ -19,6 +19,11 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_by" jdbcType="BIGINT" property="updateBy" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <association property="role" javaType="com.example.start.module.entity.SysRole">
+      <id column="role_id" property="id"/>
+      <result column="role_name" property="roleName"/>
+      <result column="alias" property="alias"/>
+    </association>
   </resultMap>
   <sql id="Base_Column_List">
     <!--
@@ -31,64 +36,72 @@
     <!--
       WARNING - @mbg.generated
     -->
-    select 
-    <include refid="Base_Column_List" />
-    from sys_user
-    where   is_del=0  and id = #{id,jdbcType=BIGINT}
+    select
+    u.id, u.login_account, u.user_name, u.password, u.sex, u.phone, u.email, u.birth_date, u.disable, u.is_del,
+    u.create_by, u.create_time, u.update_by, u.update_time,
+    r.id AS role_id,r.role_name,r.alias
+    from sys_user u
+    LEFT JOIN sys_user_role ur ON u.id=ur.user_id
+    LEFT JOIN sys_role r ON r.id = ur.role_id
+    where  u.is_del=0 AND r.disabled=0 AND r.is_del=0 and u.id = #{id,jdbcType=BIGINT}
   </select>
   <select id="find" resultMap="BaseResultMap">
     <!--
       WARNING - @mbg.generated
     -->
-    select 
-    <include refid="Base_Column_List" />
-    from sys_user
+    select
+    u.id, u.login_account, u.user_name, u.password, u.sex, u.phone, u.email, u.birth_date, u.disable, u.is_del,
+    u.create_by, u.create_time, u.update_by, u.update_time,
+    r.id AS role_id,r.role_name,r.alias
+    from sys_user u
+    LEFT JOIN sys_user_role ur ON u.id=ur.user_id
+    LEFT JOIN sys_role r ON r.id = ur.role_id
     <where>
-      is_del=0
+      u.is_del=0 AND r.disabled=0 AND r.is_del=0
       <if test="id != null">
-         and id=#{id,jdbcType=BIGINT}
+         and u.id=#{id,jdbcType=BIGINT}
       </if>
       <if test="loginAccount != null">
-        and login_account LIKE CONCAT(CONCAT('%',#{loginAccount,jdbcType=VARCHAR}),'%')
+        and u.login_account LIKE CONCAT(CONCAT('%',#{loginAccount,jdbcType=VARCHAR}),'%')
       </if>
       <if test="userName != null">
-         and user_name LIKE CONCAT(CONCAT('%',#{userName,jdbcType=VARCHAR}),'%')
+         and u.user_name LIKE CONCAT(CONCAT('%',#{userName,jdbcType=VARCHAR}),'%')
       </if>
       <if test="password != null">
-         and password=#{password,jdbcType=VARCHAR}
+         and u.password=#{password,jdbcType=VARCHAR}
       </if>
       <if test="sex != null">
-         and sex=#{sex,jdbcType=BIT}
+         and u.sex=#{sex,jdbcType=BIT}
       </if>
       <if test="phone != null">
-         and phone LIKE CONCAT(CONCAT('%',#{phone,jdbcType=VARCHAR}),'%')
+         and u.phone LIKE CONCAT(CONCAT('%',#{phone,jdbcType=VARCHAR}),'%')
       </if>
       <if test="email != null">
-         and email LIKE CONCAT(CONCAT('%',#{email,jdbcType=VARCHAR}),'%')
+         and u.email LIKE CONCAT(CONCAT('%',#{email,jdbcType=VARCHAR}),'%')
       </if>
       <if test="birthDate != null">
-         and birth_date=#{birthDate,jdbcType=TIMESTAMP}
+         and u.birth_date=#{birthDate,jdbcType=TIMESTAMP}
       </if>
       <if test="disable != null">
-         and disable=#{disable,jdbcType=BIT}
+         and u.disable=#{disable,jdbcType=BIT}
       </if>
       <if test="isDel != null">
-         and is_del=#{isDel,jdbcType=BIT}
+         and u.is_del=#{isDel,jdbcType=BIT}
       </if>
       <if test="createBy != null">
-         and create_by=#{createBy,jdbcType=BIGINT}
+         and u.create_by=#{createBy,jdbcType=BIGINT}
       </if>
       <if test="createTime != null">
-         and create_time=#{createTime,jdbcType=TIMESTAMP}
+         and u.create_time=#{createTime,jdbcType=TIMESTAMP}
       </if>
       <if test="updateBy != null">
-         and update_by=#{updateBy,jdbcType=BIGINT}
+         and u.update_by=#{updateBy,jdbcType=BIGINT}
       </if>
       <if test="updateTime != null">
-         and update_time=#{updateTime,jdbcType=TIMESTAMP}
+         and u.update_time=#{updateTime,jdbcType=TIMESTAMP}
       </if>
     </where>
-    ORDER by update_time DESC
+    ORDER by u.update_time DESC
   </select>
   <update id="deleteByPK" parameterType="java.lang.Long">
     <!--

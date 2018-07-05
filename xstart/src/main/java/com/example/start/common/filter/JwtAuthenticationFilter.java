@@ -23,7 +23,7 @@ import java.util.ArrayList;
  * 如果校验通过，就认为这是一个取得授权的合法请求
  */
 public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
-    private static Logger log = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
+    private static Logger logger = LoggerFactory.getLogger(JwtAuthenticationFilter.class);
 
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager) {
         super(authenticationManager);
@@ -37,7 +37,7 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
             chain.doFilter(request, response);
             return;
         }
-
+        logger.info("=============Authorization: " + header);
         UsernamePasswordAuthenticationToken authenticationToken = getAuthentication(request,header);
 
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
@@ -51,7 +51,7 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
                 .getBody()
                 .getSubject();
 
-        if (null != user && request.getSession().getAttribute(Constants.USER_ + JwtUtils.getRawToken(token)) != null) {
+        if (null != user /*&& request.getSession().getAttribute(Constants.USER_ + JwtUtils.getRawToken(token)) != null*/) {
             return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
         }
 
