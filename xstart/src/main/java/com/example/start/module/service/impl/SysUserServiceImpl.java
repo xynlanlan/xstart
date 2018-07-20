@@ -14,6 +14,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 import static java.util.Collections.emptyList;
@@ -46,6 +48,7 @@ public class SysUserServiceImpl implements UserDetailsService, SysUserService {
     }
 
     @Override
+    @Transactional
     public int add(SysUser entity) throws ServiceException {
     	try{
             int count = sysUserMapper.findAccountCount(0L,entity.getLoginAccount());
@@ -68,6 +71,7 @@ public class SysUserServiceImpl implements UserDetailsService, SysUserService {
         user.setPassword(password);
     }
  	@Override
+    @Transactional
     public int update(SysUser entity) throws ServiceException {
     	try{
             int count = sysUserMapper.findAccountCount(entity.getId(),entity.getLoginAccount());
@@ -82,11 +86,13 @@ public class SysUserServiceImpl implements UserDetailsService, SysUserService {
     }   
 
     @Override
+    @Transactional
     public int delete(Long id) throws ServiceException {
         return sysUserMapper.deleteByPK(id);
     }
 
     @Override
+    @Transactional
     public int disabled(Long id, Integer status) throws ServiceException {
         SysUser entity = new SysUser();
         entity.setId(id);
@@ -95,6 +101,7 @@ public class SysUserServiceImpl implements UserDetailsService, SysUserService {
     }
 
     @Override
+    @Transactional
     public SysUser findByAccount(String account) throws ServiceException {
         try{
             return sysUserMapper.findByAccount(account);
@@ -104,6 +111,7 @@ public class SysUserServiceImpl implements UserDetailsService, SysUserService {
     }
 
     @Override
+    @Transactional
     public int batchDelete(List<Long> ids) throws ServiceException {
         try{
             return sysUserMapper.batchDelete(ids);

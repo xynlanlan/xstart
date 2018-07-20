@@ -10,7 +10,7 @@ import com.example.start.module.entity.SysRoleResources;
 import com.example.start.common.exception.ServiceException;
 import com.example.start.module.dao.SysRoleResourcesMapper;
 import com.example.start.module.service.SysRoleResourcesService;
-
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Component
@@ -40,6 +40,7 @@ public class SysRoleResourcesServiceImpl implements SysRoleResourcesService {
     }
 
     @Override
+    @Transactional
     public int add(SysRoleResources entity) throws ServiceException {
     	try{
     		return sysRoleResourcesMapper.insertSelective(entity);
@@ -49,6 +50,7 @@ public class SysRoleResourcesServiceImpl implements SysRoleResourcesService {
     }
 
  	@Override
+    @Transactional
     public int update(SysRoleResources entity) throws ServiceException {
     	try{
     		return sysRoleResourcesMapper.updateByPkSelective(entity);
@@ -58,6 +60,7 @@ public class SysRoleResourcesServiceImpl implements SysRoleResourcesService {
     }   
 
     @Override
+    @Transactional
     public int delete(Long id) throws ServiceException {
         return sysRoleResourcesMapper.deleteByPK(id);
     }

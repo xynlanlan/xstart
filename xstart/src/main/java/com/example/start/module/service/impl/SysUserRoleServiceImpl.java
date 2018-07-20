@@ -10,7 +10,7 @@ import com.example.start.module.entity.SysUserRole;
 import com.example.start.common.exception.ServiceException;
 import com.example.start.module.dao.SysUserRoleMapper;
 import com.example.start.module.service.SysUserRoleService;
-
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Component
@@ -40,6 +40,7 @@ public class SysUserRoleServiceImpl implements SysUserRoleService {
     }
 
     @Override
+    @Transactional
     public int add(SysUserRole entity) throws ServiceException {
     	try{
     		return sysUserRoleMapper.insertSelective(entity);
@@ -49,6 +50,7 @@ public class SysUserRoleServiceImpl implements SysUserRoleService {
     }
 
  	@Override
+    @Transactional
     public int update(SysUserRole entity) throws ServiceException {
     	try{
     		return sysUserRoleMapper.updateByPkSelective(entity);
@@ -58,6 +60,7 @@ public class SysUserRoleServiceImpl implements SysUserRoleService {
     }   
 
     @Override
+    @Transactional
     public int delete(Long id) throws ServiceException {
         return sysUserRoleMapper.deleteByPK(id);
     }

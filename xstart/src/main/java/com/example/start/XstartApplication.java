@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.apache.catalina.Context;
 
@@ -21,6 +21,7 @@ import javax.servlet.Filter;
 @MapperScan("com.example.start.module.*.dao")
 @SpringBootApplication
 @EnableAutoConfiguration()
+@EnableTransactionManagement
 public class XstartApplication{
 
 	@Value("${http.port}")

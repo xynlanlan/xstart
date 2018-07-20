@@ -6,6 +6,7 @@ import com.example.start.module.entity.SysResources;
 import com.example.start.module.service.SysResourcesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class SysResourcesServiceImpl implements SysResourcesService {
     }
 
     @Override
+    @Transactional
     public int add(SysResources entity) throws ServiceException {
     	try{
     		return sysResourcesMapper.insertSelective(entity);
@@ -42,6 +44,7 @@ public class SysResourcesServiceImpl implements SysResourcesService {
     }
 
  	@Override
+    @Transactional
     public int update(SysResources entity) throws ServiceException {
     	try{
     		return sysResourcesMapper.updateByPkSelective(entity);
@@ -51,11 +54,13 @@ public class SysResourcesServiceImpl implements SysResourcesService {
     }   
 
     @Override
+    @Transactional
     public int delete(Long id) throws ServiceException {
         return sysResourcesMapper.deleteByPK(id);
     }
 
     @Override
+    @Transactional
     public int disabled(Long id, Integer status) throws ServiceException {
         SysResources entity = new SysResources();
         entity.setId(id);

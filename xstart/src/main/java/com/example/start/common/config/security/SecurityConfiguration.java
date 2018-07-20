@@ -35,7 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST,"/login").permitAll()
                 .antMatchers("/swagger-ui.html","/swagger-resources/**","/swagger/**","/**/v2/api-docs",
-                        "/**/*.js","/**/*.css","/**/*.png","/**/*.ico","/**/*.gif").permitAll()
+                        "/**/*.js","/**/*.css","/**/*.png","/**/*.ico","/**/*.gif","/upload/images/**").permitAll()
                 .and()
                 .addFilter(new JwtLoginFilter(authenticationManager()))
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))

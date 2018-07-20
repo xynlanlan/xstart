@@ -11,7 +11,7 @@ import com.example.start.module.entity.SysRole;
 import com.example.start.common.exception.ServiceException;
 import com.example.start.module.dao.SysRoleMapper;
 import com.example.start.module.service.SysRoleService;
-
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Component
@@ -41,6 +41,7 @@ public class SysRoleServiceImpl implements SysRoleService {
     }
 
     @Override
+    @Transactional
     public int add(SysRole entity) throws ServiceException {
     	try{
             int count = sysRoleMapper.findRoleNameCount(0L,entity.getRoleName());
@@ -55,6 +56,7 @@ public class SysRoleServiceImpl implements SysRoleService {
     }
 
  	@Override
+    @Transactional
     public int update(SysRole entity) throws ServiceException {
     	try{
             int count = sysRoleMapper.findRoleNameCount(entity.getId(),entity.getRoleName());
@@ -69,11 +71,13 @@ public class SysRoleServiceImpl implements SysRoleService {
     }   
 
     @Override
+    @Transactional
     public int delete(Long id) throws ServiceException {
         return sysRoleMapper.deleteByPK(id);
     }
 
     @Override
+    @Transactional
     public int disabled(Long id, Integer status) throws ServiceException {
         SysRole entity = new SysRole();
         entity.setId(id);
@@ -82,6 +86,7 @@ public class SysRoleServiceImpl implements SysRoleService {
     }
 
     @Override
+    @Transactional
     public int batchDelete(List<Long> ids) throws ServiceException {
         try{
             return sysRoleMapper.batchDelete(ids);

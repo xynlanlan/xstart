@@ -31,8 +31,7 @@ public class StartConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/upload/images/**").addResourceLocations("classpath:/upload/images/");
-        //registry.addResourceHandler("/upload/images/**").addResourceLocations("file:" + fileUploadPath);
+        registry.addResourceHandler("/upload/images/**").addResourceLocations("file:" + fileUploadPath);
     }
 
 
