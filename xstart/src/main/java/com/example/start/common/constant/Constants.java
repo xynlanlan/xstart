@@ -8,7 +8,7 @@ package com.example.start.common.constant;
  * 常量类
  */
 public interface Constants {
-
+    String CONTENT_TYPE = "Content-Type";
     String SIGNING_KEY = "xstart369"; // jwt秘钥
     String PROJECT_NAME = "xstart_";
     String USER_ = "user_";

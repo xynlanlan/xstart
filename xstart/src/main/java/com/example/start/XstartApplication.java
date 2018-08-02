@@ -24,11 +24,11 @@ import javax.servlet.Filter;
 @EnableTransactionManagement
 public class XstartApplication{
 
-	@Value("${http.port}")
+	/*@Value("${http.port}")
 	private Integer httpPort;
 
 	@Value("${server.port}")
-	private Integer httpsProt;
+	private Integer httpsProt;*/
 
 	public static void main(String[] args) {
 		SpringApplication.run(XstartApplication.class, args);
@@ -41,7 +41,7 @@ public class XstartApplication{
 		filter.setForceEncoding(true);
 		return filter;
 	}
-	@Bean
+	/*@Bean
 	public TomcatServletWebServerFactory servletContainer() {
 		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
 			@Override
@@ -49,7 +49,7 @@ public class XstartApplication{
 				SecurityConstraint securityConstraint = new SecurityConstraint();
 				securityConstraint.setUserConstraint("CONFIDENTIAL");
 				SecurityCollection collection = new SecurityCollection();
-				collection.addPattern("/*");
+				collection.addPattern("*//*");
 				securityConstraint.addCollection(collection);
 				context.addConstraint(securityConstraint);
 			}
@@ -65,6 +65,6 @@ public class XstartApplication{
 		connector.setSecure(false);
 		connector.setRedirectPort(httpsProt);
 		return connector;
-	}
+	}*/
 
 }
