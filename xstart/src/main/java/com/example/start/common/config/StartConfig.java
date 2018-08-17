@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -22,19 +23,16 @@ public class StartConfig implements WebMvcConfigurer {
         return new SecurityInterceptor();
     }
 
-   /* @Override
+    @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(securityInterceptor())
-                .excludePathPatterns("/alogin")
-                .excludePathPatterns("/error").addPathPatterns("/**");
-    }*/
-
+//        registry.addInterceptor(securityInterceptor())
+//                .excludePathPatterns("/alogin")
+//                .excludePathPatterns("/error").addPathPatterns("/**");
+    }
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/upload/images/**").addResourceLocations("file:" + fileUploadPath);
     }
-
-
     @Bean
     public ServletRegistrationBean checkWordsImgBean() {
         return new ServletRegistrationBean(new CheckWordsImgServlet(), "/words/images");

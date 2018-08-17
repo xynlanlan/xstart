@@ -1,10 +1,12 @@
 package com.example.start;
 
+import com.example.start.chat.ChatServer;
 import org.apache.catalina.connector.Connector;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
 import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,7 +24,7 @@ import javax.servlet.Filter;
 @SpringBootApplication
 @EnableAutoConfiguration()
 @EnableTransactionManagement
-public class XstartApplication{
+public class XstartApplication implements CommandLineRunner {
 
 	/*@Value("${http.port}")
 	private Integer httpPort;
@@ -40,6 +42,11 @@ public class XstartApplication{
 		filter.setEncoding("UTF-8");
 		filter.setForceEncoding(true);
 		return filter;
+	}
+
+	@Override
+	public void run(String... strings) throws Exception {
+		new ChatServer().start(9099);
 	}
 	/*@Bean
 	public TomcatServletWebServerFactory servletContainer() {

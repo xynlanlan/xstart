@@ -1,155 +1,173 @@
-2018-6-29 17:50:23[ERROR](Log4jFilter.java:152) {conn-10004, pstmt-20003} execute error. select 
-     
-    
-    id, role_name, alias, description, disabled, is_del, create_by, create_time, update_by, 
-    update_time
-   
-    from sys_role
-    where   is_del=0  and id = ?
-com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
-
-The last packet successfully received from the server was 44,672 milliseconds ago.  The last packet sent successfully to the server was 24 milliseconds ago.
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:408)
-	at com.mysql.jdbc.Util.handleNewInstance(Util.java:404)
-	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:981)
-	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3465)
-	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3365)
-	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3805)
-	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2478)
-	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2625)
-	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2551)
-	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1861)
-	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1192)
-	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3051)
-	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
-	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3049)
-	at com.alibaba.druid.wall.WallFilter.preparedStatement_execute(WallFilter.java:619)
-	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3049)
-	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
-	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3049)
-	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:168)
-	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:494)
-	at sun.reflect.GeneratedMethodAccessor81.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59)
-	at com.sun.proxy.$Proxy125.execute(Unknown Source)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
-	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
-	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:324)
-	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
-	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
-	at com.github.pagehelper.PageInterceptor.intercept(PageInterceptor.java:143)
-	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:61)
-	at com.sun.proxy.$Proxy123.query(Unknown Source)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:148)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:141)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectOne(DefaultSqlSession.java:77)
-	at sun.reflect.GeneratedMethodAccessor78.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
-	at com.sun.proxy.$Proxy93.selectOne(Unknown Source)
-	at org.mybatis.spring.SqlSessionTemplate.selectOne(SqlSessionTemplate.java:166)
-	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:82)
-	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59)
-	at com.sun.proxy.$Proxy104.findByPK(Unknown Source)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:338)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:197)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
-	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212)
-	at com.sun.proxy.$Proxy105.findByPK(Unknown Source)
-	at com.example.start.module.service.impl.SysRoleServiceImpl.findOne(SysRoleServiceImpl.java:37)
-	at com.example.start.module.service.impl.SysRoleServiceImpl$$FastClassBySpringCGLIB$$a877a3e2.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:747)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at com.alibaba.druid.support.spring.stat.DruidStatInterceptor.invoke(DruidStatInterceptor.java:72)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:689)
-	at com.example.start.module.service.impl.SysRoleServiceImpl$$EnhancerBySpringCGLIB$$1256a7a4.findOne(<generated>)
-	at com.example.start.module.controller.SysRoleController.get(SysRoleController.java:115)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:483)
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:209)
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136)
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:870)
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:776)
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:991)
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925)
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:978)
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:870)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:855)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:109)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.session.web.http.SessionRepositoryFilter.doFilterInternal(SessionRepositoryFilter.java:146)
-	at org.springframework.session.web.http.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:81)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:96)
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:496)
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
-	at java.lang.Thread.run(Thread.java:745)
-Caused by: java.net.SocketException: Connection reset
-	at java.net.SocketInputStream.read(SocketInputStream.java:189)
-	at java.net.SocketInputStream.read(SocketInputStream.java:121)
-	at com.mysql.jdbc.util.ReadAheadInputStream.fill(ReadAheadInputStream.java:100)
-	at com.mysql.jdbc.util.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:143)
-	at com.mysql.jdbc.util.ReadAheadInputStream.read(ReadAheadInputStream.java:173)
-	at com.mysql.jdbc.MysqlIO.readFully(MysqlIO.java:2954)
-	at com.mysql.jdbc.MysqlIO.reuseAndReadPacket(MysqlIO.java:3375)
-	... 128 more
+2018-8-17 14:36:02[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 14:45:21[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 14:48:38[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 14:56:02[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 14:58:09[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 15:03:27[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 15:06:03[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 15:15:37[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 15:18:31[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 15:19:38[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 15:28:23[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 15:36:47[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 15:37:57[ INFO](SocketHandler.java:26) 服务端Handler创建...
+2018-8-17 15:37:57[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:64553加入
+2018-8-17 15:37:57[ INFO](SocketHandler.java:47) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:64553
+2018-8-17 15:39:59[ INFO](SocketHandler.java:39) channelInactive
+2018-8-17 15:39:59[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:64553掉线
+2018-8-17 15:39:59[ INFO](WebSocktHandler.java:33) WebSocket Client:one离开
+2018-8-17 15:39:59[ INFO](SocketHandler.java:34) Socket Client:one离开
+2018-8-17 15:40:02[ INFO](SocketHandler.java:26) 服务端Handler创建...
+2018-8-17 15:40:02[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:63619加入
+2018-8-17 15:40:02[ INFO](SocketHandler.java:47) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:63619
+2018-8-17 15:41:49[ INFO](SocketHandler.java:39) channelInactive
+2018-8-17 15:41:49[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:63619掉线
+2018-8-17 15:41:49[ INFO](WebSocktHandler.java:33) WebSocket Client:yu离开
+2018-8-17 15:41:49[ INFO](SocketHandler.java:34) Socket Client:yu离开
+2018-8-17 15:41:52[ INFO](SocketHandler.java:26) 服务端Handler创建...
+2018-8-17 15:41:52[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:54991加入
+2018-8-17 15:41:52[ INFO](SocketHandler.java:47) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:54991
+2018-8-17 15:41:59[ INFO](SocketHandler.java:39) channelInactive
+2018-8-17 15:41:59[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:54991掉线
+2018-8-17 15:41:59[ INFO](WebSocktHandler.java:33) WebSocket Client:sd离开
+2018-8-17 15:41:59[ INFO](SocketHandler.java:34) Socket Client:sd离开
+2018-8-17 15:42:27[ INFO](SocketHandler.java:26) 服务端Handler创建...
+2018-8-17 15:42:27[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:59327加入
+2018-8-17 15:42:27[ INFO](SocketHandler.java:47) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:59327
+2018-8-17 15:43:11[ INFO](SocketHandler.java:39) channelInactive
+2018-8-17 15:43:11[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:59327掉线
+2018-8-17 15:43:11[ INFO](WebSocktHandler.java:33) WebSocket Client:dg离开
+2018-8-17 15:43:11[ INFO](SocketHandler.java:34) Socket Client:dg离开
+2018-8-17 15:43:13[ INFO](SocketHandler.java:26) 服务端Handler创建...
+2018-8-17 15:43:13[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:64988加入
+2018-8-17 15:43:13[ INFO](SocketHandler.java:47) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:64988
+2018-8-17 16:28:17[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 16:28:35[ INFO](SocketHandler.java:26) 服务端Handler创建...
+2018-8-17 16:28:35[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:50047加入
+2018-8-17 16:28:35[ INFO](SocketHandler.java:47) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:50047
+2018-8-17 16:28:35[ INFO](HttpHandler.java:37) Client:/0:0:0:0:0:0:0:1:50047异常
+2018-8-17 16:28:35[ INFO](SocketHandler.java:39) channelInactive
+2018-8-17 16:28:35[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:50047掉线
+2018-8-17 16:28:35[ INFO](WebSocktHandler.java:33) WebSocket Client:null离开
+2018-8-17 16:28:35[ INFO](SocketHandler.java:34) Socket Client:null离开
+2018-8-17 16:28:58[ INFO](SocketHandler.java:26) 服务端Handler创建...
+2018-8-17 16:28:58[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:52976加入
+2018-8-17 16:28:58[ INFO](SocketHandler.java:47) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:52976
+2018-8-17 16:29:25[ INFO](HttpHandler.java:37) Client:/0:0:0:0:0:0:0:1:52976异常
+2018-8-17 16:29:25[ INFO](SocketHandler.java:39) channelInactive
+2018-8-17 16:29:25[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:52976掉线
+2018-8-17 16:29:25[ INFO](WebSocktHandler.java:33) WebSocket Client:null离开
+2018-8-17 16:29:25[ INFO](SocketHandler.java:34) Socket Client:null离开
+2018-8-17 16:29:28[ INFO](SocketHandler.java:26) 服务端Handler创建...
+2018-8-17 16:29:28[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:56655加入
+2018-8-17 16:29:28[ INFO](SocketHandler.java:47) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:56655
+2018-8-17 16:34:05[ INFO](HttpHandler.java:37) Client:/0:0:0:0:0:0:0:1:56655异常
+2018-8-17 16:34:05[ INFO](SocketHandler.java:39) channelInactive
+2018-8-17 16:34:05[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:56655掉线
+2018-8-17 16:34:05[ INFO](WebSocktHandler.java:33) WebSocket Client:null离开
+2018-8-17 16:34:05[ INFO](SocketHandler.java:34) Socket Client:null离开
+2018-8-17 16:46:00[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 16:46:11[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:46:11[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:60340加入
+2018-8-17 16:46:11[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:60340
+2018-8-17 16:46:26[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:46:26[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:62224加入
+2018-8-17 16:46:26[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:62224
+2018-8-17 16:48:37[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 16:48:37[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:62224掉线
+2018-8-17 16:48:37[ INFO](WebSocktHandler.java:33) WebSocket Client:two离开
+2018-8-17 16:48:37[ INFO](SocketHandler.java:32) Socket Client:two离开
+2018-8-17 16:48:40[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:48:40[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:62097加入
+2018-8-17 16:48:40[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:62097
+2018-8-17 16:49:19[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 16:49:19[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:62097掉线
+2018-8-17 16:49:19[ INFO](WebSocktHandler.java:33) WebSocket Client:fgh离开
+2018-8-17 16:49:19[ INFO](SocketHandler.java:32) Socket Client:fgh离开
+2018-8-17 16:49:21[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:49:21[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:50698加入
+2018-8-17 16:49:21[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:50698
+2018-8-17 16:50:18[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 16:50:18[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:50698掉线
+2018-8-17 16:50:18[ INFO](WebSocktHandler.java:33) WebSocket Client:df离开
+2018-8-17 16:50:18[ INFO](SocketHandler.java:32) Socket Client:df离开
+2018-8-17 16:50:20[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:50:20[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:57952加入
+2018-8-17 16:50:20[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:57952
+2018-8-17 16:51:04[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 16:51:04[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:57952掉线
+2018-8-17 16:51:04[ INFO](WebSocktHandler.java:33) WebSocket Client:fd离开
+2018-8-17 16:51:04[ INFO](SocketHandler.java:32) Socket Client:fd离开
+2018-8-17 16:51:06[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:51:06[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:63725加入
+2018-8-17 16:51:06[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:63725
+2018-8-17 16:51:24[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 16:51:24[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:63725掉线
+2018-8-17 16:51:24[ INFO](WebSocktHandler.java:33) WebSocket Client:dg离开
+2018-8-17 16:51:24[ INFO](SocketHandler.java:32) Socket Client:dg离开
+2018-8-17 16:51:27[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:51:27[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:49907加入
+2018-8-17 16:51:27[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:49907
+2018-8-17 16:51:40[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 16:51:40[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:60340掉线
+2018-8-17 16:51:40[ INFO](WebSocktHandler.java:33) WebSocket Client:one离开
+2018-8-17 16:51:40[ INFO](SocketHandler.java:32) Socket Client:one离开
+2018-8-17 16:51:42[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:51:42[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:51770加入
+2018-8-17 16:51:42[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:51770
+2018-8-17 16:52:50[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 16:52:50[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:51770掉线
+2018-8-17 16:52:50[ INFO](WebSocktHandler.java:33) WebSocket Client:dfg离开
+2018-8-17 16:52:50[ INFO](SocketHandler.java:32) Socket Client:dfg离开
+2018-8-17 16:52:54[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:52:54[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:60502加入
+2018-8-17 16:52:54[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:60502
+2018-8-17 16:54:35[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:54:35[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:56427加入
+2018-8-17 16:54:35[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:56427
+2018-8-17 17:11:35[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 17:11:35[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:56427掉线
+2018-8-17 17:11:35[ INFO](WebSocktHandler.java:33) WebSocket Client:sd离开
+2018-8-17 17:11:35[ INFO](SocketHandler.java:32) Socket Client:sd离开
+2018-8-17 17:11:37[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 17:11:37[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:63746加入
+2018-8-17 17:11:37[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:63746
+2018-8-17 17:23:48[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 17:23:48[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:60502掉线
+2018-8-17 17:23:48[ INFO](WebSocktHandler.java:33) WebSocket Client:sdf离开
+2018-8-17 17:23:48[ INFO](SocketHandler.java:32) Socket Client:sdf离开
+2018-8-17 17:24:00[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 17:24:00[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:59285加入
+2018-8-17 17:24:00[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:59285
+2018-8-17 17:24:41[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 17:24:41[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:59285掉线
+2018-8-17 17:24:41[ INFO](WebSocktHandler.java:33) WebSocket Client:null离开
+2018-8-17 17:24:41[ INFO](SocketHandler.java:32) Socket Client:null离开
+2018-8-17 17:24:42[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 17:24:42[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:64476加入
+2018-8-17 17:24:42[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:64476
+2018-8-17 17:27:20[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 17:27:20[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:64476掉线
+2018-8-17 17:27:20[ INFO](WebSocktHandler.java:33) WebSocket Client:null离开
+2018-8-17 17:27:20[ INFO](SocketHandler.java:32) Socket Client:null离开
+2018-8-17 17:27:22[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 17:27:22[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:54024加入
+2018-8-17 17:27:22[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:54024
+2018-8-17 17:27:36[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 17:27:36[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:54024掉线
+2018-8-17 17:27:36[ INFO](WebSocktHandler.java:33) WebSocket Client:null离开
+2018-8-17 17:27:36[ INFO](SocketHandler.java:32) Socket Client:null离开
+2018-8-17 17:27:40[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 17:27:40[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:56253加入
+2018-8-17 17:27:40[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:56253
+2018-8-17 17:28:53[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 17:28:53[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:56253掉线
+2018-8-17 17:28:53[ INFO](WebSocktHandler.java:33) WebSocket Client:null离开
+2018-8-17 17:28:53[ INFO](SocketHandler.java:32) Socket Client:null离开
+2018-8-17 17:28:55[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 17:28:55[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:65446加入
+2018-8-17 17:28:55[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:65446
+2018-8-17 17:45:44[ INFO](ChatServer.java:63) 服务已启动,监听端口9099
+2018-8-17 17:45:58[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 17:45:58[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:50566加入
+2018-8-17 17:45:58[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:50566
