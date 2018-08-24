@@ -25,7 +25,8 @@ import javax.servlet.Filter;
 @EnableAutoConfiguration()
 @EnableTransactionManagement
 public class XstartApplication implements CommandLineRunner {
-
+	@Value("${ws.prot}")
+	private Integer wsProt;
 	/*@Value("${http.port}")
 	private Integer httpPort;
 
@@ -46,7 +47,7 @@ public class XstartApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception {
-		new ChatServer().start(9099);
+		new ChatServer().start(wsProt);
 	}
 	/*@Bean
 	public TomcatServletWebServerFactory servletContainer() {

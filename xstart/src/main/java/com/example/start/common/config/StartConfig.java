@@ -1,5 +1,6 @@
 package com.example.start.common.config;
 
+import com.example.start.chat.handler.HttpHandler;
 import com.example.start.common.interceptor.SecurityInterceptor;
 import com.example.start.common.servlet.CheckNumberImgServlet;
 import com.example.start.common.servlet.CheckOtherImgServlet;
@@ -32,6 +33,7 @@ public class StartConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/upload/images/**").addResourceLocations("file:" + fileUploadPath);
+        registry.addResourceHandler("/c/**").addResourceLocations(HttpHandler.webroot);
     }
     @Bean
     public ServletRegistrationBean checkWordsImgBean() {
