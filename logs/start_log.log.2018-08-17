@@ -1,0 +1,174 @@
+2018-8-17 14:36:02[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 14:45:21[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 14:48:38[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 14:56:02[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 14:58:09[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 15:03:27[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 15:06:03[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 15:15:37[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 15:18:31[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 15:19:38[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 15:28:23[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 15:36:47[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 15:37:57[ INFO](SocketHandler.java:26) 服务端Handler创建...
+2018-8-17 15:37:57[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:64553加入
+2018-8-17 15:37:57[ INFO](SocketHandler.java:47) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:64553
+2018-8-17 15:39:59[ INFO](SocketHandler.java:39) channelInactive
+2018-8-17 15:39:59[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:64553掉线
+2018-8-17 15:39:59[ INFO](WebSocktHandler.java:33) WebSocket Client:one离开
+2018-8-17 15:39:59[ INFO](SocketHandler.java:34) Socket Client:one离开
+2018-8-17 15:40:02[ INFO](SocketHandler.java:26) 服务端Handler创建...
+2018-8-17 15:40:02[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:63619加入
+2018-8-17 15:40:02[ INFO](SocketHandler.java:47) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:63619
+2018-8-17 15:41:49[ INFO](SocketHandler.java:39) channelInactive
+2018-8-17 15:41:49[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:63619掉线
+2018-8-17 15:41:49[ INFO](WebSocktHandler.java:33) WebSocket Client:yu离开
+2018-8-17 15:41:49[ INFO](SocketHandler.java:34) Socket Client:yu离开
+2018-8-17 15:41:52[ INFO](SocketHandler.java:26) 服务端Handler创建...
+2018-8-17 15:41:52[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:54991加入
+2018-8-17 15:41:52[ INFO](SocketHandler.java:47) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:54991
+2018-8-17 15:41:59[ INFO](SocketHandler.java:39) channelInactive
+2018-8-17 15:41:59[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:54991掉线
+2018-8-17 15:41:59[ INFO](WebSocktHandler.java:33) WebSocket Client:sd离开
+2018-8-17 15:41:59[ INFO](SocketHandler.java:34) Socket Client:sd离开
+2018-8-17 15:42:27[ INFO](SocketHandler.java:26) 服务端Handler创建...
+2018-8-17 15:42:27[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:59327加入
+2018-8-17 15:42:27[ INFO](SocketHandler.java:47) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:59327
+2018-8-17 15:43:11[ INFO](SocketHandler.java:39) channelInactive
+2018-8-17 15:43:11[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:59327掉线
+2018-8-17 15:43:11[ INFO](WebSocktHandler.java:33) WebSocket Client:dg离开
+2018-8-17 15:43:11[ INFO](SocketHandler.java:34) Socket Client:dg离开
+2018-8-17 15:43:13[ INFO](SocketHandler.java:26) 服务端Handler创建...
+2018-8-17 15:43:13[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:64988加入
+2018-8-17 15:43:13[ INFO](SocketHandler.java:47) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:64988
+2018-8-17 16:28:17[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 16:28:35[ INFO](SocketHandler.java:26) 服务端Handler创建...
+2018-8-17 16:28:35[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:50047加入
+2018-8-17 16:28:35[ INFO](SocketHandler.java:47) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:50047
+2018-8-17 16:28:35[ INFO](HttpHandler.java:37) Client:/0:0:0:0:0:0:0:1:50047异常
+2018-8-17 16:28:35[ INFO](SocketHandler.java:39) channelInactive
+2018-8-17 16:28:35[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:50047掉线
+2018-8-17 16:28:35[ INFO](WebSocktHandler.java:33) WebSocket Client:null离开
+2018-8-17 16:28:35[ INFO](SocketHandler.java:34) Socket Client:null离开
+2018-8-17 16:28:58[ INFO](SocketHandler.java:26) 服务端Handler创建...
+2018-8-17 16:28:58[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:52976加入
+2018-8-17 16:28:58[ INFO](SocketHandler.java:47) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:52976
+2018-8-17 16:29:25[ INFO](HttpHandler.java:37) Client:/0:0:0:0:0:0:0:1:52976异常
+2018-8-17 16:29:25[ INFO](SocketHandler.java:39) channelInactive
+2018-8-17 16:29:25[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:52976掉线
+2018-8-17 16:29:25[ INFO](WebSocktHandler.java:33) WebSocket Client:null离开
+2018-8-17 16:29:25[ INFO](SocketHandler.java:34) Socket Client:null离开
+2018-8-17 16:29:28[ INFO](SocketHandler.java:26) 服务端Handler创建...
+2018-8-17 16:29:28[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:56655加入
+2018-8-17 16:29:28[ INFO](SocketHandler.java:47) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:56655
+2018-8-17 16:34:05[ INFO](HttpHandler.java:37) Client:/0:0:0:0:0:0:0:1:56655异常
+2018-8-17 16:34:05[ INFO](SocketHandler.java:39) channelInactive
+2018-8-17 16:34:05[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:56655掉线
+2018-8-17 16:34:05[ INFO](WebSocktHandler.java:33) WebSocket Client:null离开
+2018-8-17 16:34:05[ INFO](SocketHandler.java:34) Socket Client:null离开
+2018-8-17 16:46:00[ INFO](ChatServer.java:59) 服务已启动,监听端口9099
+2018-8-17 16:46:11[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:46:11[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:60340加入
+2018-8-17 16:46:11[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:60340
+2018-8-17 16:46:26[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:46:26[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:62224加入
+2018-8-17 16:46:26[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:62224
+2018-8-17 16:48:37[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 16:48:37[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:62224掉线
+2018-8-17 16:48:37[ INFO](WebSocktHandler.java:33) WebSocket Client:two离开
+2018-8-17 16:48:37[ INFO](SocketHandler.java:32) Socket Client:two离开
+2018-8-17 16:48:40[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:48:40[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:62097加入
+2018-8-17 16:48:40[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:62097
+2018-8-17 16:49:19[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 16:49:19[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:62097掉线
+2018-8-17 16:49:19[ INFO](WebSocktHandler.java:33) WebSocket Client:fgh离开
+2018-8-17 16:49:19[ INFO](SocketHandler.java:32) Socket Client:fgh离开
+2018-8-17 16:49:21[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:49:21[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:50698加入
+2018-8-17 16:49:21[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:50698
+2018-8-17 16:50:18[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 16:50:18[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:50698掉线
+2018-8-17 16:50:18[ INFO](WebSocktHandler.java:33) WebSocket Client:df离开
+2018-8-17 16:50:18[ INFO](SocketHandler.java:32) Socket Client:df离开
+2018-8-17 16:50:20[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:50:20[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:57952加入
+2018-8-17 16:50:20[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:57952
+2018-8-17 16:51:04[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 16:51:04[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:57952掉线
+2018-8-17 16:51:04[ INFO](WebSocktHandler.java:33) WebSocket Client:fd离开
+2018-8-17 16:51:04[ INFO](SocketHandler.java:32) Socket Client:fd离开
+2018-8-17 16:51:06[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:51:06[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:63725加入
+2018-8-17 16:51:06[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:63725
+2018-8-17 16:51:24[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 16:51:24[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:63725掉线
+2018-8-17 16:51:24[ INFO](WebSocktHandler.java:33) WebSocket Client:dg离开
+2018-8-17 16:51:24[ INFO](SocketHandler.java:32) Socket Client:dg离开
+2018-8-17 16:51:27[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:51:27[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:49907加入
+2018-8-17 16:51:27[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:49907
+2018-8-17 16:51:40[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 16:51:40[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:60340掉线
+2018-8-17 16:51:40[ INFO](WebSocktHandler.java:33) WebSocket Client:one离开
+2018-8-17 16:51:40[ INFO](SocketHandler.java:32) Socket Client:one离开
+2018-8-17 16:51:42[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:51:42[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:51770加入
+2018-8-17 16:51:42[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:51770
+2018-8-17 16:52:50[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 16:52:50[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:51770掉线
+2018-8-17 16:52:50[ INFO](WebSocktHandler.java:33) WebSocket Client:dfg离开
+2018-8-17 16:52:50[ INFO](SocketHandler.java:32) Socket Client:dfg离开
+2018-8-17 16:52:54[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:52:54[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:60502加入
+2018-8-17 16:52:54[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:60502
+2018-8-17 16:54:35[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 16:54:35[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:56427加入
+2018-8-17 16:54:35[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:56427
+2018-8-17 17:11:35[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 17:11:35[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:56427掉线
+2018-8-17 17:11:35[ INFO](WebSocktHandler.java:33) WebSocket Client:sd离开
+2018-8-17 17:11:35[ INFO](SocketHandler.java:32) Socket Client:sd离开
+2018-8-17 17:11:37[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 17:11:37[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:63746加入
+2018-8-17 17:11:37[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:63746
+2018-8-17 17:23:48[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 17:23:48[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:60502掉线
+2018-8-17 17:23:48[ INFO](WebSocktHandler.java:33) WebSocket Client:sdf离开
+2018-8-17 17:23:48[ INFO](SocketHandler.java:32) Socket Client:sdf离开
+2018-8-17 17:24:00[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 17:24:00[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:59285加入
+2018-8-17 17:24:00[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:59285
+2018-8-17 17:24:41[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 17:24:41[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:59285掉线
+2018-8-17 17:24:41[ INFO](WebSocktHandler.java:33) WebSocket Client:null离开
+2018-8-17 17:24:41[ INFO](SocketHandler.java:32) Socket Client:null离开
+2018-8-17 17:24:42[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 17:24:42[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:64476加入
+2018-8-17 17:24:42[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:64476
+2018-8-17 17:27:20[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 17:27:20[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:64476掉线
+2018-8-17 17:27:20[ INFO](WebSocktHandler.java:33) WebSocket Client:null离开
+2018-8-17 17:27:20[ INFO](SocketHandler.java:32) Socket Client:null离开
+2018-8-17 17:27:22[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 17:27:22[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:54024加入
+2018-8-17 17:27:22[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:54024
+2018-8-17 17:27:36[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 17:27:36[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:54024掉线
+2018-8-17 17:27:36[ INFO](WebSocktHandler.java:33) WebSocket Client:null离开
+2018-8-17 17:27:36[ INFO](SocketHandler.java:32) Socket Client:null离开
+2018-8-17 17:27:40[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 17:27:40[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:56253加入
+2018-8-17 17:27:40[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:56253
+2018-8-17 17:28:53[ INFO](SocketHandler.java:37) channelInactive
+2018-8-17 17:28:53[ INFO](WebSocktHandler.java:47) WebSocket Client:0:0:0:0:0:0:0:1:56253掉线
+2018-8-17 17:28:53[ INFO](WebSocktHandler.java:33) WebSocket Client:null离开
+2018-8-17 17:28:53[ INFO](SocketHandler.java:32) Socket Client:null离开
+2018-8-17 17:28:55[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 17:28:55[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:65446加入
+2018-8-17 17:28:55[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:65446
+2018-8-17 17:45:44[ INFO](ChatServer.java:63) 服务已启动,监听端口9099
+2018-8-17 17:45:58[ INFO](SocketHandler.java:24) 服务端Handler创建...
+2018-8-17 17:45:58[ INFO](WebSocktHandler.java:26) WebSocket Client:0:0:0:0:0:0:0:1:50566加入
+2018-8-17 17:45:58[ INFO](SocketHandler.java:45) Socket Client: 有客户端连接：0:0:0:0:0:0:0:1:50566
+2018-8-17 17:47:36[ INFO](ChatServer.java:63) 服务已启动,监听端口9099
