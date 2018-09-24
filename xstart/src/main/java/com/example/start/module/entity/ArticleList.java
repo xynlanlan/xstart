@@ -3,36 +3,34 @@ package com.example.start.module.entity;
 import com.example.start.common.entity.BaseEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import java.util.Date;
-
-public class SysRole extends BaseEntity {
+public class ArticleList extends BaseEntity {
     /**
      * 
-     * sys_role.id
+     * t_article_list.id
      */
     private Long id;
 
     /**
-     * 角色名
-     * sys_role.role_name
+     * 标题
+     * t_article_list.title
      */
-    private String roleName;
+    private String title;
 
     /**
-     * 别名
-     * sys_role.alias
+     * 链接
+     * t_article_list.url
      */
-    private String alias;
+    private String url;
 
     /**
-     * 简介
-     * sys_role.description
+     * 是否爬取(0:未爬取 1:已爬取)
+     * t_article_list.is_reptile
      */
-    private String description;
+    private Boolean isReptile;
 
     /**
      * 是否禁用(0:启用 1:禁用)
-     * sys_role.disabled
+     * t_article_list.disabled
      */
     private Boolean disabled;
 
@@ -53,51 +51,51 @@ public class SysRole extends BaseEntity {
     }
 
     /**
-     * 角色名
+     * 标题
      * @return the value of java.lang.String
      */
-    public String getRoleName() {
-        return roleName;
+    public String getTitle() {
+        return title;
     }
 
     /**
-     * 角色名
-     * @param roleName * roleName
+     * 标题
+     * @param title * title
      */
-    public void setRoleName(String roleName) {
-        this.roleName = roleName == null ? null : roleName.trim();
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
     }
 
     /**
-     * 别名
+     * 链接
      * @return the value of java.lang.String
      */
-    public String getAlias() {
-        return alias;
+    public String getUrl() {
+        return url;
     }
 
     /**
-     * 别名
-     * @param alias * alias
+     * 链接
+     * @param url * url
      */
-    public void setAlias(String alias) {
-        this.alias = alias == null ? null : alias.trim();
+    public void setUrl(String url) {
+        this.url = url == null ? null : url.trim();
     }
 
     /**
-     * 简介
-     * @return the value of java.lang.String
+     * 是否爬取(0:未爬取 1:已爬取)
+     * @return the value of java.lang.Boolean
      */
-    public String getDescription() {
-        return description;
+    public Boolean getIsReptile() {
+        return isReptile;
     }
 
     /**
-     * 简介
-     * @param description * description
+     * 是否爬取(0:未爬取 1:已爬取)
+     * @param isReptile * isReptile
      */
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
+    public void setIsReptile(Boolean isReptile) {
+        this.isReptile = isReptile;
     }
 
     /**

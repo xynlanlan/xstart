@@ -1,6 +1,7 @@
 package com.example.start.module.entity;
 
 import com.example.start.common.entity.BaseEntity;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class SysUserRole extends BaseEntity {
     /**
@@ -67,5 +68,10 @@ public class SysUserRole extends BaseEntity {
      */
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 }

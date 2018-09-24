@@ -18,7 +18,8 @@ public enum ExceptionCode {
     UN_AUTHORIZED_ERROR("1000007", "请重新登入!"),
 
     INVALID_OPT("1000008", "无效操作！"),
-    DATA_ERROR("1000009", "无效数据!");
+    DATA_ERROR("1000009", "无效数据!"),
+    NOT_DATA("1000010", "未查询到数据!");
 
     private String code;
 

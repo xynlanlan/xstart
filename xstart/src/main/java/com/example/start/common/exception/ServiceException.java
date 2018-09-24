@@ -3,7 +3,7 @@ package com.example.start.common.exception;
 /**
  * 自定义服务异常
  */
-public class ServiceException extends Exception {
+public class ServiceException extends RuntimeException {
 
     private final String code;
 

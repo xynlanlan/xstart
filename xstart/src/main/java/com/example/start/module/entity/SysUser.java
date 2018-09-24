@@ -1,6 +1,8 @@
 package com.example.start.module.entity;
 
 import com.example.start.common.entity.BaseEntity;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.util.Date;
 import java.util.List;
 
@@ -213,5 +215,10 @@ public class SysUser extends BaseEntity {
 
     public void setRole(SysRole role) {
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
     }
 }
