@@ -52,7 +52,7 @@
           if (valid) {
             // alert('submit!');
             console.log(this.ruleForm);
-            this.$axios.post('https://xuelanlan.cn:8080/api/role',{
+            this.$axios.post('/api/role',{
               createTime:this.ruleForm.createTime,
               disabled:Number(this.ruleForm.disabled),
               roleName:this.ruleForm.roleName,

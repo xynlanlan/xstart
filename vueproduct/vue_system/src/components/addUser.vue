@@ -68,7 +68,7 @@
             // alert('submit!');
             console.log(this.ruleForm);
             var params = JSON.stringify(this.ruleForm);
-            this.$axios.post('https://xuelanlan.cn:8080/api/user',{
+            this.$axios.post('/api/user',{
               birthDate:this.ruleForm.birthDate,
               disable:Number(this.ruleForm.disable),
               email:this.ruleForm.email,

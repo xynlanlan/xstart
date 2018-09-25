@@ -43,20 +43,21 @@ export default {
     },
     methods:{
         login(){
-            this.$axios.post('https://xuelanlan.cn:8080/alogin',{
+            this.$axios.post('/login',{
                 loginAccount:this.loginAccount,
                 password:this.password
             }).then(response=>{
                 console.log(response);
-                if(response.data.status==200){
+                if(response.status==200){
                     this.$router.push({ path: 'index' });
-
+                    localStorage.setItem('token',response.data.Authorization);
+                    // debugger;
                 }else{
                     alert("账号或密码输入错误！")
                 }
             }).catch(error=>{
                 console.log(error);
-                alert(error.data.message);
+                // alert(error.data.message);
             })
         }
     },
@@ -66,6 +67,23 @@ export default {
     },
     beforeDestroy(){
         document.getElementsByTagName("body")[0].style.background="#fff";
+    },
+    mounted(){
+        // this.$axios.head('/login',{
+        //         loginAccount:this.loginAccount,
+        //         password:this.password
+        //     }).then(response=>{
+        //         console.log(response);
+        //         if(response.status==200){
+        //             this.$router.push({ path: 'index' });
+        //             localStorage.setItem('token',response.headers.authorization);
+        //         }else{
+        //             alert("账号或密码输入错误！")
+        //         }
+        //     }).catch(error=>{
+        //         console.log(error);
+        //     })
+        // }
     }
     
 }

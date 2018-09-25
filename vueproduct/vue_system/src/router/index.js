@@ -27,7 +27,11 @@ export default new Router({
         },
         {
             path: '/index',
-            name: 'index',
+            // name: 'index',
+            // meta: {
+            //     requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+            //     ,meta:{requireAuth: true}
+            // },
             components: {
                 index:index
             },
@@ -44,55 +48,6 @@ export default new Router({
                 {path: '/',redirect: '/home'}
             ]
         },
-        // {
-        //     path: '/home',
-        //     name: 'home',
-        //     components: {
-        //         content:home
-        //     }
-        // },
-        // {
-        //     path: '/userManagement',
-        //     name: 'userManagement',
-        //     components: {
-        //         content:userManagement
-        //     }
-        // },
-        // {
-        //     path: '/roleManagement',
-        //     name: 'roleManagement',
-        //     component: roleManagement
-        // },
-        // {
-        //     path: '/resourceManagement',
-        //     name: 'resourceManagement',
-        //     component: resourceManagement
-        // },
-        // {
-        //     path: '/addUser',
-        //     name: 'addUser',
-        //     component: addUser
-        // },
-        // {
-        //     path: '/addRole',
-        //     name: 'addRole',
-        //     component: addRole
-        // },
-        // {
-        //     path: '/bookList',
-        //     name: 'bookList',
-        //     component: bookList
-        // },
-        // {
-        //     path: '/bookClassify',
-        //     name: 'bookClassify',
-        //     component: bookClassify
-        // },
-        // {
-        //     path: '/changePwd',
-        //     name: 'changePwd',
-        //     component: changePwd
-        // },
         {
             path: '/',
             redirect: '/login'
