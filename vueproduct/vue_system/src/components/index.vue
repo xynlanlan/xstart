@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import eheader from '@/components/header';
-import leftBar from '@/components/leftBar';
+import eheader from '@/components/common/header';
+import leftBar from '@/components/common/leftBar';
 export default {
   
   name: 'index',

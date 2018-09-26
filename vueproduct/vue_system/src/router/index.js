@@ -4,15 +4,15 @@ import index from '@/components/index'
 // import leftbar from '@/components/leftBar'
 import login from '@/components/login'
 import home from '@/components/home'
-import userManagement from '@/components/userManagement'
-import roleManagement from '@/components/roleManagement'
-import resourceManagement from '@/components/resourceManagement'
-import addUser from '@/components/addUser'
-import addRole from '@/components/addRole'
+import userManagement from '@/components/user/userManagement'
+import roleManagement from '@/components/role/roleManagement'
+import resourceManagement from '@/components/resource/resourceManagement'
+import addUser from '@/components/user/addUser'
+import addRole from '@/components/role/addRole'
 
-import bookList from '@/components/bookList'
-import bookClassify from '@/components/bookClassify'
-import changePwd from '@/components/changePwd'
+import bookList from '@/components/book/bookList'
+import bookClassify from '@/components/book/bookClassify'
+import changePwd from '@/components/user/changePwd'
 
 Vue.use(Router)
 

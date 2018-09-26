@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import {formatDate} from "../js/formatDate.js"
+import {formatDate} from "../../js/formatDate.js"
 let id = 1000;
 export default {
   name: "resourceManagement",

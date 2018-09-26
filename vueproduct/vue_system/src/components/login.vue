@@ -5,8 +5,21 @@
             <el-form-item>
                 <el-input v-model="loginAccount" placeholder="请输入账号" prefix-icon="el-icon-message"></el-input>
             </el-form-item>
-            <el-form-item>
-                <el-input v-model="password" placeholder="请输入密码" prefix-icon="el-icon-view"></el-input>
+            <!-- <el-form-item>
+                <el-input type="password" v-model="password" placeholder="请输入密码" prefix-icon="el-icon-view"></el-input>
+            </el-form-item> -->
+            
+            <el-form-item v-if="visible" >
+                <el-input type="password" v-model="password" placeholder="请输入密码">
+                    <i slot="prefix" title="显示密码" @click="changePass('show')" style="cursor:pointer;"
+                    class="el-input__icon el-icon-view"></i>
+                </el-input>
+            </el-form-item>
+            <el-form-item v-else>
+                <el-input type="text" v-model="password" placeholder="请输入密码">
+                    <i slot="prefix" title="隐藏密码" @click="changePass('hide')" style="cursor:pointer;"
+                    class="el-input__icon el-icon-view"></i>
+                </el-input>
             </el-form-item>
 
             <el-button native-type="submit" class="loginBtn" type="primary" @click="login()">登录</el-button>
@@ -22,7 +35,8 @@ export default {
     data(){
         return {
             // loginAccount:"",
-            password:""
+            password:"",
+            visible: true 
         }
     },
     watch:{
@@ -59,7 +73,10 @@ export default {
                 console.log(error);
                 // alert(error.data.message);
             })
-        }
+        },
+        changePass(value) {
+            this.visible = !(value === 'show');
+        }    //判断渲染，true:暗文显示，false:明文显示
     },
     beforeCreate(){
         document.getElementsByTagName("body")[0].style.background="#2c394a";
