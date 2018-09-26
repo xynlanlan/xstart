@@ -1,4 +1,4 @@
-package com.example.start.common.config.session;
+package com.example.start.common.config.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
