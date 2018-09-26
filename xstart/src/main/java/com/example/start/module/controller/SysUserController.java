@@ -103,7 +103,7 @@ public class SysUserController extends BaseController {
         }
         return success(sysUserService.batchDelete(ids));
     }
-    @RequiredPermission
+    /*@RequiredPermission
     @ApiOperation(value="启用/禁用用户", notes="根据id启用/禁用用户")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long",paramType = "path"),
@@ -115,7 +115,7 @@ public class SysUserController extends BaseController {
             throw new ServiceException(ExceptionCode.ILLEGAL_PARAMETER);
         }
         return success(sysUserService.disabled(id,status));
-    }
+    }*/
     @RequiredPermission
     @ApiOperation(value="查询用户详情", notes="根据id获取用户信息")
     @ApiImplicitParam(name = "id", value = "资源ID", required = true, dataType = "Long",paramType = "path")
