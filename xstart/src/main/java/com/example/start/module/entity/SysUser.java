@@ -12,7 +12,10 @@ public class SysUser extends BaseEntity {
      * sys_user.id
      */
     private Long id;
-
+    /**
+     * 搜索关键字
+     */
+    private String keyword;
     /**
      * 登录账号
      * sys_user.login_account
@@ -215,6 +218,14 @@ public class SysUser extends BaseEntity {
 
     public void setRole(SysRole role) {
         this.role = role;
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
     }
 
     @Override

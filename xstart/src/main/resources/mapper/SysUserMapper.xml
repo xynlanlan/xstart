@@ -55,9 +55,9 @@
     r.id AS role_id,r.role_name,r.alias
     from sys_user u
     LEFT JOIN sys_user_role ur ON u.id=ur.user_id
-    LEFT JOIN sys_role r ON r.id = ur.role_id
+    LEFT JOIN sys_role r ON (r.id = ur.role_id AND r.disabled=0 AND r.is_del=0)
     <where>
-      u.is_del=0 AND r.disabled=0 AND r.is_del=0
+      u.is_del=0
       <if test="id != null">
          and u.id=#{id,jdbcType=BIGINT}
       </if>
@@ -99,6 +99,11 @@
       </if>
       <if test="updateTime != null">
          and u.update_time=#{updateTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="keyword != null and keyword != ''">
+        and (u.phone LIKE CONCAT(CONCAT('%',#{keyword,jdbcType=VARCHAR}),'%')
+        or u.login_account LIKE CONCAT(CONCAT('%',#{keyword,jdbcType=VARCHAR}),'%')
+        or u.user_name LIKE CONCAT(CONCAT('%',#{keyword,jdbcType=VARCHAR}),'%'))
       </if>
     </where>
     ORDER by u.update_time DESC

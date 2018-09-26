@@ -63,9 +63,9 @@ export default {
             }).then(response=>{
                 console.log(response);
                 if(response.status==200){
-                    this.$router.push({ path: 'index' });
                     localStorage.setItem('token',response.data.Authorization);
                     // debugger;
+                    this.$router.push({ path: 'index' });
                 }else{
                     alert("账号或密码输入错误！")
                 }

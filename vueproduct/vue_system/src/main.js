@@ -10,7 +10,7 @@ import store from './store/'
 
 // 配置默认的host
 axios.defaults.baseURL = 'https://xuelanlan.cn' 
-
+//axios.defaults.baseURL = 'http://localhost:8080'
 Vue.use(ElementUI);
 Vue.prototype.$axios = axios
 
