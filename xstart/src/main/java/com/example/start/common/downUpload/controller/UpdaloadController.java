@@ -23,7 +23,7 @@ public class UpdaloadController extends BaseController {
     @Value("${web.upload.path}")
     private String fileUploadPath;
 
-    @Value("${web.upload.url}")
+    @Value("${web.upload.jsoup}")
     private String webUploadUrl;
 
     @RequestMapping(value = "/upload",method = RequestMethod.POST)

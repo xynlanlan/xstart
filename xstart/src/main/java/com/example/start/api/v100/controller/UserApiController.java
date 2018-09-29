@@ -23,7 +23,7 @@ public class UserApiController extends BaseController{
 
     private static Logger logger = LoggerFactory.getLogger(UserApiController.class);
 
-    @Value("${wx.jscode2session.url}")
+    @Value("${wx.jscode2session.jsoup}")
     private String jscode2sessionUrl;
 
     @Value("${wx.pay.appId}")

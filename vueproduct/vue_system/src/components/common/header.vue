@@ -15,8 +15,8 @@
             </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>个人信息</el-dropdown-item>
-              <el-dropdown-item>修改密码</el-dropdown-item>
-              <el-dropdown-item>退出登录</el-dropdown-item>
+              <el-dropdown-item><router-link :to="{ path: '/changePwd' }">修改密码</router-link></el-dropdown-item>
+              <el-dropdown-item  @click.native ="logout">退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>
@@ -41,7 +41,22 @@ export default {
     userName(){
       this.loginAccount =  sessionStorage.getItem('userName');
       console.log(this.loginAccount)
-    }
+    },
+    logout(){
+            this.$axios.get('/logout').then(response=>{
+                console.log(response);
+                if(response.status==200){
+                    localStorage.removeItem('token');
+                    // debugger;
+                    this.$router.push({ path: 'login' });
+                }else{
+                    alert("系统错误！")
+                }
+            }).catch(error=>{
+                console.log(error);
+                // alert(error.data.message);
+            })
+        },
 
   },
   mounted(){

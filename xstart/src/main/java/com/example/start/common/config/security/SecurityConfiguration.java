@@ -36,13 +36,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST,"/login").permitAll()
                 .antMatchers("/swagger-ui.html","/swagger-resources/**","/swagger/**","/**/v2/api-docs",
                         "/**/*.js","/**/*.css","/**/*.png","/**/*.ico","/**/*.gif","/upload/images/**").permitAll()
-                .and()
-                .addFilter(new JwtLoginFilter(authenticationManager()))
-                .addFilter(new JwtAuthenticationFilter(authenticationManager()))
-                .logout() // 默认注销行为为logout，可以通过下面的方式来修改
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login")
-                .permitAll().invalidateHttpSession(true);
+                .and().formLogin()
+                .loginPage("/common/needLogin")
+                .loginProcessingUrl("/login").permitAll()
+                .and().logout().permitAll()
+                .and().addFilter(new JwtLoginFilter(authenticationManager()))
+                .addFilter(new JwtAuthenticationFilter(authenticationManager()));
     }
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {

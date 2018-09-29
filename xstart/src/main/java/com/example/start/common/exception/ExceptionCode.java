@@ -4,7 +4,6 @@ package com.example.start.common.exception;
  * 异常枚举
  */
 public enum ExceptionCode {
-
     RESOURCE_NOT_EXIT("404", "访问的资源不存在！"),
     SYSTEM_ERROR("0000000", "系统错误，请联系系统管理员!"),
     ILLEGAL_PARAMETER("1000000", "非法参数错误!"),
@@ -19,7 +18,8 @@ public enum ExceptionCode {
 
     INVALID_OPT("1000008", "无效操作！"),
     DATA_ERROR("1000009", "无效数据!"),
-    NOT_DATA("1000010", "未查询到数据!");
+    NOT_DATA("1000010", "未查询到数据!"),
+    NOT_LOGIN("-1", "未登陆!");
 
     private String code;
 

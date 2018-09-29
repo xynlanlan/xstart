@@ -3,34 +3,56 @@ package com.example.start.module.entity;
 import com.example.start.common.entity.BaseEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class ArticleList extends BaseEntity {
+import java.util.Date;
+
+public class Article extends BaseEntity {
     /**
      * 
-     * t_article_list.id
+     * t_article.id
      */
     private Long id;
 
     /**
      * 标题
-     * t_article_list.title
+     * t_article.title
      */
     private String title;
 
     /**
      * 链接
-     * t_article_list.url
+     * t_article.jsoup
      */
     private String url;
+    /**
+     * 作者
+     * t_article.writer
+     */
+    private String writer;
 
     /**
+     * 发布日期
+     * t_article.publish_time
+     */
+    private Date publishTime;
+    /**
+     * 文章内容(文本)
+     * t_article.body_text
+     */
+    private String bodyText;
+    /**
+     * 文章内容(html)
+     * t_article.body_html
+     */
+    private String bodyHtml;
+    /**
      * 是否爬取(0:未爬取 1:已爬取)
-     * t_article_list.is_reptile
+     * t_article.is_reptile
      */
     private Boolean isReptile;
 
     /**
      * 是否禁用(0:启用 1:禁用)
-     * t_article_list.disabled
+     * t_article.disabled
      */
     private Boolean disabled;
 
@@ -76,7 +98,7 @@ public class ArticleList extends BaseEntity {
 
     /**
      * 链接
-     * @param url * url
+     * @param url * jsoup
      */
     public void setUrl(String url) {
         this.url = url == null ? null : url.trim();
@@ -84,18 +106,18 @@ public class ArticleList extends BaseEntity {
 
     /**
      * 是否爬取(0:未爬取 1:已爬取)
-     * @return the value of java.lang.Boolean
+     * @return
      */
-    public Boolean getIsReptile() {
+    public Boolean getReptile() {
         return isReptile;
     }
 
     /**
      * 是否爬取(0:未爬取 1:已爬取)
-     * @param isReptile * isReptile
+     * @param reptile
      */
-    public void setIsReptile(Boolean isReptile) {
-        this.isReptile = isReptile;
+    public void setReptile(Boolean reptile) {
+        isReptile = reptile;
     }
 
     /**
@@ -112,6 +134,38 @@ public class ArticleList extends BaseEntity {
      */
     public void setDisabled(Boolean disabled) {
         this.disabled = disabled;
+    }
+
+    public String getWriter() {
+        return writer;
+    }
+
+    public void setWriter(String writer) {
+        this.writer = writer;
+    }
+
+    public Date getPublishTime() {
+        return publishTime;
+    }
+
+    public void setPublishTime(Date publishTime) {
+        this.publishTime = publishTime;
+    }
+
+    public String getBodyText() {
+        return bodyText;
+    }
+
+    public void setBodyText(String bodyText) {
+        this.bodyText = bodyText;
+    }
+
+    public String getBodyHtml() {
+        return bodyHtml;
+    }
+
+    public void setBodyHtml(String bodyHtml) {
+        this.bodyHtml = bodyHtml;
     }
 
     @Override
