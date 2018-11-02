@@ -1,6 +1,7 @@
 package com.example.start;
 
 import com.example.start.chat.ChatServer;
+import com.example.start.common.mongodb.EnableMongoPlus;
 import org.apache.catalina.connector.Connector;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
 import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
@@ -19,6 +20,7 @@ import org.apache.catalina.Context;
 
 import javax.servlet.Filter;
 
+@EnableMongoPlus
 @ServletComponentScan
 @MapperScan("com.example.start.module.*.dao")
 @SpringBootApplication

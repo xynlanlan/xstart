@@ -1,7 +1,3 @@
-/*
- * Copyright (c) 2015. Bond(China)
- */
-
 package com.example.start.common.base;
 
 import com.alibaba.fastjson.JSON;
